@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Cost Splitter</title>
+	<link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+<body>
+	<div id = "header" class="container">
+		<h1>Cost Splitter</h1>
+	</div>
+
+	<div id = "main" class="container">
+		<form>
+			<label>Total Bill: 
+				<input id="total" type="number" step="0.01" placeholder="Total Bill">
+			</label>
+			<br>
+			<label>Group size: 
+				<input id="group" type="number" placeholder="Group size">
+			</label>
+			<br>
+			
+			<h3>If anybody is paying their own bill, enter the amount below:</h3>
+			
+			<label>Bougie/Cheapscate: 
+				<input id="outlier" type="number" step="0.01" placeholder="highest/lowest order">
+			</label>
+			
+			xxxxxx<input id ="addButton" type="button" value="Add another outlier" onclick="addOutlier()">xxxxxxx
+			<br><br><br>
+
+			<input type="button" value="Portion without Tip" onclick="calculateWOutTip()">
+			<br><br>
+			<label>Each person's bill WITHOUT TIP: 
+			<p id="partWithOutTip"></p>
+			</label>
+			<br>
+
+			<input type="button" value="Tip" onclick="calculateTip()">
+			<br><br>
+			<label>Each person's TIP: 
+			<p id="Tip"></p>
+			</label>
+			<br>
+
+		</form>
+	</div>	
+
+	<script>
+		//for now, in calculateWOutTip, group-1, instead of the ideal group-i
+	// var = i;
+	// 	function addOutlier{
+	// 		for (i=0; i++){
+	// 		var more = document.getElementById("outlier").value;
+	// 		}
+			
+	// 			if adding more outliers, then need to be able to increment by 1, so that var i = 0 (there could be no outliers); i++
+	// 	}
+
+		function addOutlier(){
+			if "addutton" clicked, =true, 
+		}
+
+	var total = document.getElementById("total").value;
+	var group = document.getElementById("group").value;
+	var outlier = document.getElementById("outlier").value;
+	var 
+		function calculateWOutTip(){
+			document.getElementById("partWithOutTip").innerHTML = "Each person pays" + (total-outlier)/(group-i) + " except for the person with the "	+ "$" + outlier + "bill, who is paying for themselves."	;
+		}
+
+		function calculateTip(){
+			document.getElementById("Tip").innerHTML = "Each person pays" + 10/100*(total)/(group) + " including the person with the "	+ "$" + outlier + "bill."	;
+		}		
+
+	</script>
+
+</body>
+</html>
+
+<!-- input html with type="number"
+	Resources: https://www.bing.com/videos/search?q=input+html+with+type%3d%22number%22&view=detail&mid=6F074FEC3863608E0CEC6F074FEC3863608E0CEC&FORM=VIRE -->
+
+<!-- <input type="button" id="b" value="You click 0 times" onclick="buttonClicked()"/>
+<script>
+var clicks = 0;
+function buttonClicked(){
+clicks++;
+document.getElementById("b").value = "You click " + clicks + " times";
+}
+</script> -->
+
+<!-- Notetaker
+<p id=“text” onclick=“textClicked()”>Click me</p>
+<script>
+function textClicked(){
+document.getElementById(“text”).innerHTML = “Ow that hurt”;
+}
+</script> -->
