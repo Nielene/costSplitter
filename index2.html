@@ -60,11 +60,76 @@
 
 
 	<script>
-		
+		function listOutliers(){
+			return{
+				outlier: document.getElementById("outlier").value.split(' ,')
+			}
+		}
+
+	var totalGroupDiff = [];
+	var outLiers = [];
+	var totalOutlierDiff = [];
+
+
+		function addOutlier(){
+			outLiers.push ( listOutliers() );
+			}	// if "addutton" clicked, =true,
+
+		function getSum(total,num) {
+			return total + num;
+		}
+
+		function subtractOutlier(item) {
+			return total - getSum();
+			document.getElementById("showSum").value = outLiers.reduce(getSum);
+		}
+	
+
+	var total = document.getElementById("total").value;
+	var group = document.getElementById("group").value;
+	var outlier = document.getElementById("outlier").value;
+	var 
+		function calculateWOutTip(){
+			document.getElementById("partWithOutTip").innerHTML = "Each person pays" + (total-outlier)/(group-i) + " except for the person with the "	+ "$" + outlier + "bill, who is paying for themselves."	;
+		}
+
+		function calculateTip(){
+			document.getElementById("Tip").innerHTML = "Each person pays" + 10/100*(total)/(group) + " including the person with the "	+ "$" + outlier + "bill."	;
+		}		
+
 	</script>
 
 </body>
 </html>
+
+<!-- input html with type="number"
+	Resources: https://www.bing.com/videos/search?q=input+html+with+type%3d%22number%22&view=detail&mid=6F074FEC3863608E0CEC6F074FEC3863608E0CEC&FORM=VIRE -->
+
+<!-- <input type="button" id="b" value="You click 0 times" onclick="buttonClicked()"/>
+<script>
+var clicks = 0;
+function buttonClicked(){
+clicks++;
+document.getElementById("b").value = "You click " + clicks + " times";
+}
+</script> -->
+
+<!-- Notetaker
+<p id=“text” onclick=“textClicked()”>Click me</p>
+<script>
+function textClicked(){
+document.getElementById(“text”).innerHTML = “Ow that hurt”;
+}
+</script> -->
+
+<!-- //for now, in calculateWOutTip, group-1, instead of the ideal group-i
+	// var = i;
+	// 	function addOutlier{
+	// 		for (i=0; i++){
+	// 		var more = document.getElementById("outlier").value;
+	// 		}
+	// 			if adding more outliers, then need to be able to increment by 1, so that var i = 0 (there could be no outliers); i++
+	// 	} -->
 
 
 assuming one bill, maybe ate more of the food platter. te user enters the total. 
@@ -74,21 +139,9 @@ get teh result.
 then decide that the guinea pig(s) should pay 20% more than that.
 also, decide that the organiser should pay -10% less.
 	there is an input box of percentages.
-	avg cost *  (-100% to +100%) = pig's cost. - display on page
+	avg cost *  (0 to 100%) = pig's cost. - display on page
 	other input
-	other input   
-
-	- how do you add another input box - "Add/Remove Input Fields Dynamically using jQuery - CodexWorld"
-	https://www.youtube.com/watch?v=rVmZXJj5lH0
-	https://www.youtube.com/watch?v=xzLclwZOZ-g
-
-	in 1st box, "use calc avg"button
-	https://www.w3schools.com/jquery/tryit.asp?filename=tryjquery_html_after
-
-	the original avg cost cost is given; the dynamic field is for "type = percent" and is linked to the avg bill.
-
-	i also want a place to label these percentages: names.
-	so i want the "add new diff bill button" should open two input fields: placeholder: name and placeholder %.
+	other input   - how do you add another input box - "Add/Remove Input Fields Dynamically using jQuery - CodexWorld"
 
 now subtract this person's bill from the original total.
 get this new total and divide by the group-1. to get the new (lower) average of q body else.

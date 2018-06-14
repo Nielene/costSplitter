@@ -1,19 +1,45 @@
 body{
 	text-align: center;
-	background-color: blue;
+	background-color: #42f489;
+}
+
+#header h1{
+	color: #6dff54;
+	font-family: "Times New Roman", Times, serif;
+	font-style: italic;
+	font-weight: bold;
+	font-size: 80px;
 }
 
 #header{
-	color: white;
 	text-align: center;
-	padding-top: 30px;
+	padding-top: 5px;
 	padding-bottom: 30px;
 	background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRH2fraPKe-GFHFsMgAztZJdeach_8a82VAEJKycwbP-cDC-ZS0gQ);
 	background-color: black;
+	/*opacity of backgound image: translucent;*/
 }	
-#main{
-	padding-top: 30px;
-	padding-bottom: 30px;
+
+#main {
+	color: black;
+	font-family: "Times New Roman", Times, serif;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 16px;
+	
+	padding-top: 30px;	
 	text-align: center;
 	background-color: #42f489;
 }
+
+#mainInputs{
+	padding-top: 5px;
+	padding-bottom: 10px;
+}
+
+#instructions{
+	font-size: 18px;
+	padding-top: 10px;
+	padding-bottom: 20px;
+}
+
