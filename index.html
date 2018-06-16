@@ -1,27 +1,8 @@
-<?php
-<!-- index.php -->
-
-$connect = new PDO("mysql:host=localhost;dbname=testing4", "root", "");
-
-function fill_unit_select_box($connect)
-{
-
-}
-
-?>
-
-
-
 <!DOCTYPE html>
 <html>
 <head>
 	<title>Cost Splitter</title>
-
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-
-
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 </head>
 	<body>
 		<br>
@@ -31,35 +12,64 @@ function fill_unit_select_box($connect)
 				<div>
 					Total bill: <input type="number" id="total">
 					Number in group: <input type="number" id="groupNum">
-					<input type="button" value="Fair share" onclick="sum()"><br>
+					<input type="button" value="Fair share" onclick="average()"><br>
+					
 					Everyone's fair share is: <input type="number" id="printOrigAvg">
+					
 					<p id="question1"></p><br>
 				</div>
 			<!-- </form> -->
 		</div>
+		
 		<script>
-			function sum(){
-			document.getElementById("printOrigAvg").value = document.getElementById("total").value / document.getElementById("groupNum").value   ;
-			document.getElementById("question1").innerHTML = "But is that really fair? Should someone pay something more? Or something less?"
+			var fairShare;
+			var total;
+			var groupNum;
+
+			function average(){
+				total = document.getElementById("total").value;
+				groupNum = document.getElementById("groupNum").value;
+
+				var fairShare = total / groupNum;
+
+				document.getElementById("printOrigAvg").value = total / groupNum;
+				
+				document.getElementById("printOrigAvg2").value = total / groupNum;
+			
+				document.getElementById("question1").innerHTML = "But is that really fair? Should someone pay something more? Or something less?"
+
+				console.log(fairShare);
 			}
 		</script>
 
-		<form method="post" id="insert_form">
-			<div class="table-responsive">
-				<table class="table table-bordered" id="item_table">
-					<tr>
-						<th>Enter Item Name</th>
-						<th>Enter Quantity</th>
-						<th>Enter Unit</th>
-						<th><button type="button" name="add" class="btn btn-success btn-sm add"><span class="glyphicon glyphicon-plus"></span></button></th>
-					</tr>
-				</table>
-				<br>
-				<div align="center">
-					<input type="submit" name="submit" class="btn btn-info" value="Insert">
-			</div>
-		</div>
-	</form>
+		<input type="name" placeholder="Who" id="name">
+		<input type="number" placeholder="Fair share" id="printOrigAvg2">
+		<input type="number" placeholder="How much more? Or less?" id="percent">% 
+		
+		<input type="button" value="More" onclick="percentMore()"> or 
+		<input type="button" value="Less" onclick="percentLess()"><br>
+		
+		<p id="theirShare"></p>
+		
+
+		<script>
+			var fair
+
+			var theirShare = document.getElementById("theirShare").value
+			var newFairShare = 
+			
+			function percentMore(){
+							
+				document.getElementById("theirShare").value = fairShare + ( document.getElementById("percent") * fairShare );
+
+				// document.getElementById("theirShare").innerHTML = name + "\'s share is " + theirShare + "and everyone else's is " + .. + "."
+			}
+
+
+		</script>
+		
+
+		
 
 
 
@@ -74,6 +84,13 @@ https://www.youtube.com/watch?v=xzLclwZOZ-g
 https://www.youtube.com/watch?v=xzLclwZOZ-g
 https://www.w3schools.com/php/php_includes.asp
 https://stackoverflow.com/questions/22776583/why-php-tag-is-not-working-in-html-file
+https://bootstrapdocs.com/v3.3.6/docs/css/
+https://www.w3schools.com/tags/tag_output.asp
+https://www.w3schools.com/tags/att_input_type.asp
+https://www.sololearn.com/Discuss/196415/solved-why-i-cant-use-a-variable-outside-the-function-defined-inside-a-function
+
+
+
 
 
 		// var averageSoln = a/b;
@@ -106,5 +123,36 @@ var a = document.getElementById("total").value;
 var b = document.getElementById("groupNum").value;
 
 document.getElementById("printOrigAvg").value = a + b;
+
+<input type="name" placeholder="Who" id="name">
+		<input type="number" placeholder="How much more? Or less?" id="percent">% 
+		<input list="moreOrLess" name="moreOrLess">
+		<datalist id="moreOrLess">
+			<option value = "more">
+			<option value = "less">
+		</datalist>
+		<input type="button" value="Their share" onclick="percent()"><br>
+		<p id="theirShare"></p>
+
+
+<script>
+			// var fairShare = document.getElementById("printOrigAvg").value;
+			var total = document.getElementById("total").value;
+			var groupNum = document.getElementById("groupNum").value;
+
+			function average(){
+				var fairShare = document.getElementById("printOrigAvg").value;
+
+				fairShare = total / groupNum;
+
+				
+			// document.getElementById("printOrigAvg").value = document.getElementById("total").value / document.getElementById("groupNum").value;
+
+			// document.getElementById("printOrigAvg2").value = document.getElementById("total").value / document.getElementById("groupNum").value;
+			document.getElementById("question1").innerHTML = "But is that really fair? Should someone pay something more? Or something less?"
+			}
+		</script>
+
+
 
 -->

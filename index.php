@@ -1,5 +1,5 @@
 <?php
-<!-- index.php -->
+//index.php
 
 $connect = new PDO("mysql:host=localhost;dbname=testing4", "root", "");
 
