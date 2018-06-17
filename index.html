@@ -55,13 +55,16 @@
 		
 			var theirShare;
 			var newFairShare;
-			var percent = document.getElementById("percent").value;
-			var name = document.getElementById("name").value;
+			var percent;
+			var name;
 
 			
 			function percentMore(){
-				
-				theirShare = fairShare + ( document.getElementById("percent").value /100 * fairShare);
+				percent = document.getElementById("percent").value;
+				name = document.getElementById("name").value;
+
+
+				theirShare = fairShare + (percent/100 * fairShare);
 
 				newFairShare = (total - theirShare)/(groupNum - 1);
 
@@ -76,6 +79,26 @@
 
 			}
 
+
+			function percentLess(){
+				percent = document.getElementById("percent").value;
+
+				name = document.getElementById("name").value;
+
+				theirShare = fairShare - (percent/100 * fairShare);
+
+				newFairShare = (total - theirShare)/(groupNum - 1);
+
+				document.getElementById("theirShare").innerHTML = name + "\'s share is " + theirShare + " and everyone else's is " + newFairShare + "."
+
+				console.log(name);
+				console.log(total);
+				console.log(groupNum);
+				console.log(fairShare);
+				console.log(theirShare);
+				console.log(newFairShare);
+
+			}
 
 		</script>
 		
