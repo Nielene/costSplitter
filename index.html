@@ -12,20 +12,19 @@
 </head>
 	<body>
 		<div id="header">		
-			<h1>Cost Splitter</h1>
+			<h1>Cost  Splitter</h1>
 		</div>
 
 			<div class="main container-fluid">
-			<!-- <form method="post" id="insert_form"> -->
 				<div class="row mainInputs ">
 
-					<div class="block mainInputs col-6 ml-auto">
+					<div class="block mainInputs">
 						<label>Total bill: </label>
-						<input type="number" placeholder="Total" id="total">
+						<input type="number" placeholder=" Total" id="total">
 					</div>
 					<div class="block mainInputs">
 						<label>Number in group: </label>
-						<input type="number" placeholder="Group Number" id="groupNum">
+						<input type="number" placeholder=" Group Number" id="groupNum">
 					</div>
 					<div class="block mainInputs">
 						<input type="button" value="Fair Share" onclick="average()"><br>
@@ -33,13 +32,11 @@
 					<div class="block mainInputs">
 						<label>Everyone's fair share is: </label>
 						<input type="number" placeholder="Click 'Fair Share' to see" id="printOrigAvg">
-					</div>
+					</div><br>
 					<div class="block mainInputs">
-						<p id="question1"></p><br>
+						<p id="question1">Also, consider using The Adjuster:</p>
 					</div>
-
 				</div>
-			<!-- </form> -->
 			</div>
 		
 		<script>
@@ -59,7 +56,7 @@
 
 				document.getElementById("printOrigAvg2").value = num1;
 			
-				document.getElementById("question1").innerHTML = "But is that really fair? Should someone pay something more? Or something less?"
+				document.getElementById("question1").innerHTML = "But is that really fair?" + "<br>" +"Should someone pay something more? Or something less?"
 
 				console.log("Total is " + total);
 				console.log("Group num is " + groupNum);
@@ -68,7 +65,7 @@
 			}
 		</script>
 
-		<div class="main container-fluid">
+		<div class="main2 container-fluid">
 			
 			<div class="block mainInputs">
 				<input type="text" placeholder=" Who is paying" id="name">
@@ -123,7 +120,6 @@
 				console.log("New fairshare is " + num3);
 				console.log("New fairshare is ~ " + newFairShare);
 			}
-
 
 			function percentLess(){
 				percent = document.getElementById("percent").value;

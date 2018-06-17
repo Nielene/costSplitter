@@ -4,19 +4,22 @@ body{
 }
 
 #header h1{
-	color: #6dff54;
+	/*color: #6dff54;*/
+	color: #42f489;
 	font-family: "Times New Roman", Times, serif;
 	font-style: italic;
 	font-weight: bold;
 	font-size: 80px;
+	letter-spacing: 15px;
 }
 
 #header{
 	text-align: center;
-	padding-top: 5px;
-	padding-bottom: 20px;
+	padding-top: 1px;
+	padding-bottom: 12px;
 	background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRH2fraPKe-GFHFsMgAztZJdeach_8a82VAEJKycwbP-cDC-ZS0gQ);
-	background-color: black;
+	/*opacity: 0.5;*/
+	/*background-color: black;*/
 	/*opacity of backgound image: translucent;*/
 }	
 
@@ -25,27 +28,48 @@ body{
 	font-family: "Times New Roman", Times, serif;
 	font-style: normal;
 	font-weight: bold;
-	font-size: 16px;
+	font-size: 18px;
 	
-	padding-top: 30px;	
+	padding-top: 15px;	
+	text-align: center;
+	background-color: #42f489;
+}
+
+.main2 {
+	color: black;
+	font-family: "Times New Roman", Times, serif;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 18px;
+	
 	text-align: center;
 	background-color: #42f489;
 }
 
 .mainInputs{
-	padding-top: 2px;
-	padding-bottom: 2px;
+	padding-top: 5px;
+	padding-bottom: 5px;
+}
+
+#question1{
+	font-size: 20px;
+	padding-top: 5px;
+	padding-bottom: 10px;
+	word-spacing: 3px;
+	letter-spacing: 1px;
 }
 
 .instructions{
-	font-size: 18px;
-	padding-top: 10px;
-	padding-bottom: 20px;
+	font-size: 20px;
+	padding-top: 5px;
+	padding-bottom: 10px;
+	word-spacing: 3px;
+	letter-spacing: 1px;
 }
 
-.row1{
+/*.row1{
 	display: inline;
-}
+}*/
 
 /*.block label{
 	display: inline-block;
