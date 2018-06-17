@@ -18,18 +18,7 @@
 					<p id="question1"></p><br>
 				</div>
 			<!-- </form> -->
-				<div>
-					<input type="text" placeholder="Who" id="name">
-					<input type="number" placeholder="Fair share" id="printOrigAvg2">
-					<input type="number" placeholder="How much more? Or less?" id="percent">% 
-					
-					<input type="button" value="More" onclick="percentMore()"> or 
-					<input type="button" value="Less" onclick="percentLess()"><br>
-					
-					<p id="theirShare"></p>
-				</div>
-
-		</div>
+			</div>
 		
 		<script>
 			var fairShare;
@@ -52,23 +41,41 @@
 				console.log(groupNum);
 				console.log(fairShare);
 			}
+		</script>
+
+
+			<div>
+				<input type="text" placeholder="Who" id="name">
+				<input type="number" placeholder="Fair share" id="printOrigAvg2">
+				<input type="number" placeholder="How much more? Or less?" id="percent">% 
+				
+				<input type="button" value="More" onclick="percentMore()"> or 
+				<input type="button" value="Less" onclick="percentLess()"><br>
+				
+				<p id="theirShare"></p>
+			</div>
+
+		<script>
 		
 			var theirShare;
 			var newFairShare;
 			var percent;
 			var name;
 
-			
+			var num1;
+			var num2;
+
 			function percentMore(){
 				percent = document.getElementById("percent").value;
 				name = document.getElementById("name").value;
 
+				num1 = fairShare + (percent/100 * fairShare);
+				theirShare = num1.toFixed(2);
 
-				theirShare = fairShare + (percent/100 * fairShare);
+				num2 = (total - theirShare)/(groupNum - 1);
+				newFairShare = num2.toFixed(2)
 
-				newFairShare = (total - theirShare)/(groupNum - 1);
-
-				document.getElementById("theirShare").innerHTML = name + "\'s share is " + theirShare + " and everyone else's is " + newFairShare + "."
+				document.getElementById("theirShare").innerHTML = name + "\'s share is $" + theirShare + " and everyone else's is $" + newFairShare + "."
 
 				console.log(name);
 				console.log(total);
@@ -76,7 +83,6 @@
 				console.log(fairShare);
 				console.log(theirShare);
 				console.log(newFairShare);
-
 			}
 
 
@@ -85,11 +91,13 @@
 
 				name = document.getElementById("name").value;
 
-				theirShare = fairShare - (percent/100 * fairShare);
+				num1 = fairShare - (percent/100 * fairShare);
+				theirShare = num1.toFixed(2);
 
-				newFairShare = (total - theirShare)/(groupNum - 1);
+				num2 = (total - theirShare)/(groupNum - 1);
+				newFairShare = num2.toFixed(2);
 
-				document.getElementById("theirShare").innerHTML = name + "\'s share is " + theirShare + " and everyone else's is " + newFairShare + "."
+				document.getElementById("theirShare").innerHTML = name + "\'s share is $" + theirShare + " and everyone else's is $" + newFairShare + "."
 
 				console.log(name);
 				console.log(total);
@@ -97,12 +105,10 @@
 				console.log(fairShare);
 				console.log(theirShare);
 				console.log(newFairShare);
-
 			}
 
 		</script>
 		
-
 		
 
 
@@ -122,7 +128,7 @@ https://bootstrapdocs.com/v3.3.6/docs/css/
 https://www.w3schools.com/tags/tag_output.asp
 https://www.w3schools.com/tags/att_input_type.asp
 https://www.sololearn.com/Discuss/196415/solved-why-i-cant-use-a-variable-outside-the-function-defined-inside-a-function
-
+https://javascript.info/number
 
 
 
