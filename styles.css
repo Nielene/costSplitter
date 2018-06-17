@@ -14,13 +14,13 @@ body{
 #header{
 	text-align: center;
 	padding-top: 5px;
-	padding-bottom: 30px;
+	padding-bottom: 20px;
 	background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRH2fraPKe-GFHFsMgAztZJdeach_8a82VAEJKycwbP-cDC-ZS0gQ);
 	background-color: black;
 	/*opacity of backgound image: translucent;*/
 }	
 
-#main {
+.main {
 	color: black;
 	font-family: "Times New Roman", Times, serif;
 	font-style: normal;
@@ -32,14 +32,29 @@ body{
 	background-color: #42f489;
 }
 
-#mainInputs{
-	padding-top: 5px;
-	padding-bottom: 10px;
+.mainInputs{
+	padding-top: 2px;
+	padding-bottom: 2px;
 }
 
-#instructions{
+.instructions{
 	font-size: 18px;
 	padding-top: 10px;
 	padding-bottom: 20px;
 }
 
+.row1{
+	display: inline;
+}
+
+/*.block label{
+	display: inline-block;
+	width: 50%;
+	text-align: right;
+}*/
+
+/*.block input{
+	display: grid;
+	grid-template-columns: max-content max-content;
+	grid-gap: 5px;
+}*/
