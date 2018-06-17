@@ -8,17 +8,27 @@
 		<br>
 		<div class="container">
 			<h1 align="center">Cost Splitter</h1>
+			
 			<!-- <form method="post" id="insert_form"> -->
 				<div>
 					Total bill: <input type="number" id="total">
 					Number in group: <input type="number" id="groupNum">
 					<input type="button" value="Fair share" onclick="average()"><br>
-					
 					Everyone's fair share is: <input type="number" id="printOrigAvg">
-					
 					<p id="question1"></p><br>
 				</div>
 			<!-- </form> -->
+				<div>
+					<input type="text" placeholder="Who" id="name">
+					<input type="number" placeholder="Fair share" id="printOrigAvg2">
+					<input type="number" placeholder="How much more? Or less?" id="percent">% 
+					
+					<input type="button" value="More" onclick="percentMore()"> or 
+					<input type="button" value="Less" onclick="percentLess()"><br>
+					
+					<p id="theirShare"></p>
+				</div>
+
 		</div>
 		
 		<script>
@@ -30,7 +40,7 @@
 				total = document.getElementById("total").value;
 				groupNum = document.getElementById("groupNum").value;
 
-				var fairShare = total / groupNum;
+				fairShare = total / groupNum;
 
 				document.getElementById("printOrigAvg").value = total / groupNum;
 				
@@ -38,35 +48,32 @@
 			
 				document.getElementById("question1").innerHTML = "But is that really fair? Should someone pay something more? Or something less?"
 
+				console.log(total);
+				console.log(groupNum);
 				console.log(fairShare);
 			}
-		</script>
-
-		<input type="name" placeholder="Who" id="name">
-		<input type="number" placeholder="Fair share" id="printOrigAvg2">
-		<input type="number" placeholder="How much more? Or less?" id="percent">% 
 		
-		<input type="button" value="More" onclick="percentMore()"> or 
-		<input type="button" value="Less" onclick="percentLess()"><br>
-		
-		<p id="theirShare"></p>
-		
-
-		<script>
 			var theirShare;
 			var newFairShare;
+			var percent = document.getElementById("percent").value;
 			var name = document.getElementById("name").value;
 
 			
 			function percentMore(){
 				
-				theirShare = document.getElementById("theirShare").value
-
-				theirShare = fairShare + ( document.getElementById("percent") /100 * fairShare );
+				theirShare = fairShare + ( document.getElementById("percent").value /100 * fairShare);
 
 				newFairShare = (total - theirShare)/(groupNum - 1);
 
 				document.getElementById("theirShare").innerHTML = name + "\'s share is " + theirShare + " and everyone else's is " + newFairShare + "."
+
+				console.log(name);
+				console.log(total);
+				console.log(groupNum);
+				console.log(fairShare);
+				console.log(theirShare);
+				console.log(newFairShare);
+
 			}
 
 
