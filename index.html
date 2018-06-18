@@ -21,12 +21,9 @@
 					<div class="block mainInputs">
 						<label>Total bill: </label>
 						<input type="number" placeholder=" Total" id="total">
-					</div>
-					<div class="block mainInputs">
 						<label>Number in group: </label>
 						<input type="number" placeholder=" Group Number" id="groupNum">
-					</div>
-					<div class="block mainInputs">
+			
 						<input type="button" value="Fair Share" onclick="average()"><br>
 					</div>
 					<div class="block mainInputs">
@@ -34,7 +31,7 @@
 						<input type="number" placeholder="Click 'Fair Share' to see" id="printOrigAvg">
 					</div><br>
 					<div class="block mainInputs">
-						<p id="question1">Also, consider using The Adjuster:</p>
+						<p id="question1">The Adjuster:</p>
 					</div>
 				</div>
 			</div>
@@ -56,7 +53,7 @@
 
 				document.getElementById("printOrigAvg2").value = num1;
 			
-				document.getElementById("question1").innerHTML = "But is that really fair?" + "<br>" +"Should someone pay something more? Or something less?"
+				document.getElementById("question1").innerHTML = "Should someone pay something more? Or something less?"
 
 				console.log("Total is " + total);
 				console.log("Group num is " + groupNum);
@@ -65,29 +62,39 @@
 			}
 		</script>
 
+			
 		<div class="main2 container-fluid">
 			
-			<div class="block mainInputs">
+			
+
+			<div class="block mainInputs" id="inputs">
 				<input type="text" placeholder=" Who is paying" id="name">
-			</div>
-
-			<div class="block mainInputs">
 				<input type="number" placeholder=" this percentage" id="percent"> %  
-			</div>
-			
-			<div class="block mainInputs">
+
 				<input type="button" value="more" onclick="percentMore()"> or 
-				<input type="button" value="less" onclick="percentLess()"> than <br>
-			</div>
+				<input type="button" value="less" onclick="percentLess()"> than 
 
-			<div class="block mainInputs">
 				<input type="number" placeholder=" the fair share?" id="printOrigAvg2">
-			</div>
-
 			
+			<span id="addRemoveButtons">
+				<input type="button" value="Another" id= "addFields" onclick="addFields()">
+				<input type="button" value="Remove" id= "minusFields" onclick="minusFields()">
+			</span>
+			</div>
+		</div>
+
+		<form enctype="multipart/form-data" action="" method="post">
+			<div class="main2 container-fluid">
+				<ul id="adjusterFields"></ul>
+
+			</div>
+		</form>
+
+
 			<div class="block mainInputs">
 				<p id="theirShare" class="instructions"></p>
 			</div>
+
 
 		<script>
 		
@@ -144,6 +151,43 @@
 				console.log("New fairshare is ~ " + newFairShare);
 			}
 
+
+			var fields = 0;
+			var adjusterFields;
+			var more;
+			function addFields(){
+				fields++;
+				adjusterFields = document.getElementById("adjusterFields");
+				more = document.createElement("li");
+				more.innerHTML = '<div class="block mainInputs"><input type="text" placeholder=" Who is paying" id="name"><input type="number" placeholder=" this percentage" id="percent"> %  <input type="button" value="more" onclick="percentMore()"> or <input type="button" value="less" onclick="percentLess()"> than <input type="number" placeholder=" the fair share?" id="printOrigAvg2"><input type="button" value="Another" id= "addFields" onclick="addFields()"><input type="button" value="Remove" id= "minusFields" onclick="minusFields()"></div>'
+
+				var replaceElement = document.createElement('li');
+				replaceElement.innerHTML = more.innerHTML;
+
+				adjusterFields.appendChild(more);
+				adjusterFields.replaceChild(replaceElement,more);
+			}
+
+
+			function minusFields(){
+				// fields++;
+				// for (var i = adjusterFields.length - 1; i >= 0; i--) {
+				// 	adjusterFields[i]
+				// }
+				// var adjusterFields = document.getElementById("adjusterFields");
+				// var more = document.createElement("div");
+				//adjusterFields.parentNode.removeChild(adjusterFields);
+				// return false;
+
+				fields++;
+				adjusterFields = document.getElementById("adjusterFields");
+				more = document.createElement("li");
+				more.innerHTML = '<div class="block mainInputs"><input type="text" placeholder=" Who is paying" id="name"><input type="number" placeholder=" this percentage" id="percent"> %  <input type="button" value="more" onclick="percentMore()"> or <input type="button" value="less" onclick="percentLess()"> than <input type="number" placeholder=" the fair share?" id="printOrigAvg2"><input type="button" value="Another" id= "addFields" onclick="addFields()"><input type="button" value="Remove" id= "minusFields" onclick="minusFields()"></div>'
+
+				adjusterFields.removeChild(more);
+						}
+
+
 		</script>
 		
 		
@@ -169,6 +213,16 @@ https://javascript.info/number
 https://stackoverflow.com/questions/9686538/align-labels-in-form-next-to-input
 https://stackoverflow.com/questions/5482677/how-to-apply-two-css-classes-to-a-single-div-span
 https://stackoverflow.com/questions/42442323/bootstrap-4-col-align-right
+https://www.youtube.com/watch?v=d1IFl1AeJGY   -- add fields
+https://www.youtube.com/watch?v=d1IFl1AeJGY
+https://stackoverflow.com/questions/15933037/adding-input-fields-in-javascript-with-onclick-button
+https://stackoverflow.com/questions/1847220/javascript-document-createelement-delete-domelement
+https://www.w3schools.com/jsref/met_node_removechild.asp - opposite of appendChild()
+https://www.abeautifulsite.net/adding-and-removing-elements-on-the-fly-using-javascript
+https://stackoverflow.com/questions/5933157/how-to-remove-an-html-element-using-javascript
+https://developer.mozilla.org/en-US/docs/Web/API/HTMLSelectElement/remove
+https://www.youtube.com/watch?v=UbFyRPWo62Y
+https://www.youtube.com/watch?v=pRN6WFUEFFE
 
 
 
