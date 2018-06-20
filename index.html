@@ -138,7 +138,7 @@
 				percent = document.getElementById("percent").value;
 				name = document.getElementById("name").value;
 
-				num2 = fairShare - (percent/100 * fairShare);
+				num2 = theShare - (percent/100 * theShare);
 				theirShare = num2.toFixed(2);
 
 				num3 = (total - theirShare)/(groupNum - 1);
@@ -150,7 +150,7 @@
 				console.log("Person is " + name);
 				console.log("Total is " + total);
 				console.log("Group number is " + groupNum);
-				console.log("Old fair share is " + fairShare);
+				console.log("Old fair share is " + theShare);
 				console.log("Their share is " + num2);
 				console.log("Their share is ~ " + theirShare);
 				console.log("New fair share is " + num3);
@@ -444,6 +444,30 @@ Adjuster input fields:
 	
 	</div>
 </div>
+
+function percentLess(){
+				percent = document.getElementById("percent").value;
+				name = document.getElementById("name").value;
+
+				num2 = fairShare - (percent/100 * fairShare);
+				theirShare = num2.toFixed(2);
+
+				num3 = (total - theirShare)/(groupNum - 1);
+				newFairShare = num3.toFixed(2);
+
+				document.getElementById("theirShare").value= theirShare;
+				document.getElementById("displayTheirShare").innerHTML = name + "\'s share is $" + theirShare + " and everyone else's is $" + newFairShare + "."
+
+				console.log("Person is " + name);
+				console.log("Total is " + total);
+				console.log("Group number is " + groupNum);
+				console.log("Old fair share is " + fairShare);
+				console.log("Their share is " + num2);
+				console.log("Their share is ~ " + theirShare);
+				console.log("New fair share is " + num3);
+				console.log("New fairshare is ~ " + newFairShare);
+			}
+
 
 
 
