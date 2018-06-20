@@ -23,7 +23,7 @@ body{
 	/*opacity of backgound image: translucent;*/
 }	
 
-.main {
+#main {
 	color: black;
 	font-family: "Times New Roman", Times, serif;
 	font-style: normal;

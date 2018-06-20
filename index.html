@@ -65,7 +65,6 @@
 				console.log("Fair share is ~ " + num1);
 			}
 
-
 			var tipPercent;
 			var theShare;
 			var num4;
@@ -171,7 +170,7 @@
 				fields++;
 				adjusterFields = document.getElementById("adjusterFields");
 				more = document.createElement("li");
-				more.innerHTML = '<div class="main2 container-fluid">	<div class="block mainInputs" id="inputs">		<input type="text" placeholder=" Who is paying" id="name">		<input type="number" placeholder=" this percentage" id="percent"> %  		<input type="button" value="more" onclick="percentMore()"> or 		<input type="button" value="less" onclick="percentLess()"> than 		<input type="number" placeholder=" the fair share?" id="theShare"> = 		<span><input type="number" placeholder="Their Share" id="theirShare"></span>	</div></div>'
+				more.innerHTML = '<div class="main2 container-fluid inputs">	<div class="mainInputs">			<input type="text" placeholder=" Who is paying" id="name">									<input type="number" placeholder=" this percentage" id="percent"> %  						<input type="button" value="more" onclick="percentMore()"> or 							<input type="button" value="less" onclick="percentLess()"> than 						<input type="number" placeholder=" the fair share?" id="theShare"> = 							<span><input type="number" placeholder="Their Share" id="theirShare"></span>	</div>	</div>'
 
 				var replaceElement = document.createElement('li');
 				replaceElement.innerHTML = more.innerHTML;
@@ -179,6 +178,13 @@
 				adjusterFields.appendChild(more);
 				adjusterFields.replaceChild(replaceElement,more);
 			}
+
+			var remove;
+			function minusFields(){
+				adjusterFields.children[adjusterFields.children.length-1].remove();
+			}
+
+
 
 				// var replaceElement = document.createElement('li');
 				// replaceElement.innerHTML = more.innerHTML;
@@ -415,8 +421,8 @@ document.getElementById("printOrigAvg").value = a + b;
 			}
 		</script>
 
-<div class="main" class="container-fluid">
-			 <form method="post" id="insert_form"> 
+		<div id="main" class="container-fluid" class="inputs">
+			<form method="post" id="insert_form"> 
 				<div class="mainInputs row">
 
 					<div class="block mainInputs col-6 ml-auto">
@@ -429,7 +435,10 @@ document.getElementById("printOrigAvg").value = a + b;
 						<label>Number in group: </label>
 						<input type="number" placeholder="Group Number" id="groupNum">
 					</div>
+				<div>
 
+			</form>
+		
 Adjuster input fields:
 <div class="main2 container-fluid">
 	<div class="block mainInputs" id="inputs">
