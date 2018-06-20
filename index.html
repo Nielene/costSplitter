@@ -67,7 +67,7 @@
 
 
 			var tipPercent;
-			var withTip;
+			var theShare;
 			var num4;
 			
 			function shareWithTip(){
@@ -78,8 +78,8 @@
 				fairShare = total / groupNum;
 				num1 = fairShare.toFixed(2)
 
-				withTip = (percentTip/100 * total)/groupNum + fairShare;
-				num4 = withTip.toFixed(2);
+				theShare = (percentTip/100 * total)/groupNum + fairShare;
+				num4 = theShare.toFixed(2);
 
 				document.getElementById("shareWithTip").value = num4;
 				document.getElementById("theShare").value = num4;
@@ -87,7 +87,7 @@
 
 				console.log("Total is " + total);
 				console.log("Group num is " + groupNum);
-				console.log("Fairshare with tip is " + withTip);
+				console.log("Fairshare with tip is " + theShare);
 				console.log("Fairshare with tip is ~ " + num4);
 			}
 		</script>
@@ -110,18 +110,16 @@
 
 			var num2;
 			var num3;
-			var theShare;
-
+			
 			function percentMore(){
 				percent = document.getElementById("percent").value;
 				name = document.getElementById("name").value;
-				theShare = document.getElementById("theShare").value;
 
 				num2 = theShare + (percent/100 * theShare);
 				theirShare = num2.toFixed(2);
 
 				num3 = (total - theirShare)/(groupNum - 1);
-				newFairShare = num3.toFixed(2)
+				newFairShare = num3.toFixed(2);
 
 				document.getElementById("theirShare").value= theirShare;
 				document.getElementById("displayTheirShare").innerHTML = name + "\'s share is $" + theirShare + " and everyone else's is $" + newFairShare + "."
