@@ -111,8 +111,8 @@
 			var num3;
 			
 			function percentMore(i){
-				percent = document.getElementById("percent").value;
-				name = document.getElementById("name").value;
+				percent = document.getElementById("percent"+i).value;
+				name = document.getElementById("name"+i).value;
 
 				num2 = theShare + (percent/100 * theShare);
 				theirShare = num2.toFixed(2);
@@ -120,7 +120,7 @@
 				num3 = (total - theirShare)/(groupNum - 1);
 				newFairShare = num3.toFixed(2);
 
-				document.getElementById("theirShare").value= theirShare;
+				document.getElementById("theirShare" +i).value= theirShare;
 				document.getElementById("displayTheirShare").innerHTML = name + "\'s share is $" + theirShare + " and everyone else's is $" + newFairShare + "."
 
 				console.log("Person is " + name);
