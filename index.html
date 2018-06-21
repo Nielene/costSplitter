@@ -134,7 +134,7 @@
 				//useThisShare = document.getElementById("printOrigAvg").value
 
 				num2 = fairShareAll + (percent/100 * fairShareAll);
-				theirShare = num2.toFixed(2);
+				theirShare = parseFloat(num2).toFixed(2);
 
 				num3 = (total - theirShare)/(groupNum - 1);
 				newFairShare = num3.toFixed(2);
