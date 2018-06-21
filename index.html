@@ -15,6 +15,8 @@
 			<h1>Cost  Splitter</h1>
 		</div>
 
+
+<!-- The Total, Number in group, Tip percentage, Share for all with/out tip -->
 			<div class="main container-fluid">
 				<div class="row mainInputs ">
 
@@ -41,21 +43,39 @@
 					</div>
 				</div>
 			</div>
+
+
+<!-- Add / Remove buttons -->
+	<span id="addRemoveButtons">
+		<input type="button" value="Add" id= "addFields" onclick="addFields()">
+		<input type="button" value="Remove" id= "minusFields" onclick="minusFields()">
+	</span>
+
+	<p id="adjusterFields"></p>
+
 		
+
+<!-- Display for Added input fields -->
+		<div class="block mainInputs">
+			<p id="displayTheirShare" class="instructions"></p>
+		</div>
+
+
+
 		<script>
 			var fairShare;
 			var total;
 			var groupNum;
 			var num1;
 			
-			function fairShareFunc(){
-				total = document.getElementById("total").value;
-				groupNum = document.getElementById("groupNum").value;
+			function fairShareFunc(i){
+				total = document.getElementById("total"+i).value;
+				groupNum = document.getElementById("groupNum"+i).value;
 
 				fairShare = total / groupNum;
 				num1 = fairShare.toFixed(2)
 
-				document.getElementById("printOrigAvg").value = num1;
+				document.getElementById("printOrigAvg"+i).value = num1;
 				//document.getElementById("theShare").value = num1;
 				document.getElementById("question1").innerHTML = "Should someone pay something more? Or something less? Add/Remove an Adjuster."
 
@@ -66,41 +86,33 @@
 			}
 
 			var tipPercent;
+			var tipShare;
 			var theShare;
 			var num4;
 			
-			function shareWithTip(){
-				total = document.getElementById("total").value;
-				groupNum = document.getElementById("groupNum").value;
-				percentTip = document.getElementById("percentTip").value;
+			function shareWithTip(i){
+				total = document.getElementById("total"+i).value;
+				groupNum = document.getElementById("groupNum"+i).value;
+				percentTip = document.getElementById("percentTip"+i).value;
 
 				fairShare = total / groupNum;
 				num1 = fairShare.toFixed(2)
 
-				theShare = (percentTip/100 * total)/groupNum + fairShare;
-				num4 = theShare.toFixed(2);
+				tipShare = (percentTip/100 * total)/groupNum + fairShare;
+				num4 = tipShare.toFixed(2);
 
-				document.getElementById("shareWithTip").value = num4;
+				document.getElementById("shareWithTip"+i).value = num4;
 				//document.getElementById("theShare").value = num4;
 				document.getElementById("question1").innerHTML = "Should someone pay something more? Or something less? Add/Remove an Adjuster."
 
 				console.log("Total is " + total);
 				console.log("Group num is " + groupNum);
-				console.log("Fairshare with tip is " + theShare);
+				console.log("Fairshare with tip is " + tipShare);
 				console.log("Fairshare with tip is ~ " + num4);
 			}
-		</script>
+		
 
 
-	<span id="addRemoveButtons">
-		<input type="button" value="Add" id= "addFields" onclick="addFields()">
-		<input type="button" value="Remove" id= "minusFields" onclick="minusFields()">
-	</span>
-
-	<p id="adjusterFields"></p>
-
-
-		<script>
 		
 			var theirShare;
 			var newFairShare;
@@ -114,19 +126,19 @@
 				percent = document.getElementById("percent"+i).value;
 				name = document.getElementById("name"+i).value;
 
-				num2 = theShare + (percent/100 * theShare);
+				num2 = tipShare + (percent/100 * tipShare);
 				theirShare = num2.toFixed(2);
 
 				num3 = (total - theirShare)/(groupNum - 1);
 				newFairShare = num3.toFixed(2);
 
-				document.getElementById("theirShare" +i).value= theirShare;
+				document.getElementById("theirShare"+i).value= theirShare;
 				document.getElementById("displayTheirShare").innerHTML = name + "\'s share is $" + theirShare + " and everyone else's is $" + newFairShare + "."
 
 				console.log("Person is " + name);
 				console.log("Total is " + total);
 				console.log("Group num is " + groupNum);
-				console.log("Old fair share is " + theShare);
+				console.log("Old fair share is " + tipShare);
 				console.log("Their share is " + num2);
 				console.log("Their share is ~ " + theirShare);
 				console.log("New fairshare is " + num3);
@@ -137,7 +149,7 @@
 				percent = document.getElementById("percent"+i).value;
 				name = document.getElementById("name"+i).value;
 
-				num2 = theShare - (percent/100 * theShare);
+				num2 = tipShare - (percent/100 * tipShare);
 				theirShare = num2.toFixed(2);
 
 				num3 = (total - theirShare)/(groupNum - 1);
@@ -150,19 +162,13 @@
 				console.log("Person is " + name);
 				console.log("Total is " + total);
 				console.log("Group number is " + groupNum);
-				console.log("Old fair share is " + theShare);
+				console.log("Old fair share is " + tipShare);
 				console.log("Their share is " + num2);
 				console.log("Their share is ~ " + theirShare);
 				console.log("New fair share is " + num3);
 				console.log("New fairshare is ~ " + newFairShare);
 			}	
-		</script>
-
-<!-- 	<input onclick="saveData()" type="button" value="Save to CookBook"> -->
-
-	<!-- <ul id="display"></ul>	 -->
-
-		<script>
+	
 
 			var fields = 0;
 			var adjusterFields;
@@ -174,12 +180,18 @@
 				fields++;
 				adjusterFields = document.getElementById("adjusterFields");
 				more = document.createElement("li");
-				more.innerHTML = '<div class="main2 container-fluid inputs">	<div class="mainInputs">				<input type="text" placeholder=" Who is paying" id="name'+increase+'">						<input type="number" placeholder=" this percentage" id="percent'+increase+'"> %  			<input type="button" value="more" onclick="percentMore('+increase+')"> or 				<input type="button" value="less" onclick="percentLess('+increase+')"> than 			<input type="number" placeholder=" the fair share?" id="theShare'+increase+'"> = 				<input type="number" placeholder="Their Share" id="theirShare'+increase+'">	 					<input type="button" value="Submit" onclick="tally()"> </div>	</div>'
+				more.innerHTML = '<div class="main2 container-fluid inputs">	<div class="mainInputs">								<input type="text" placeholder=" Who is paying" id="name'+increase+'">										<input type="number" placeholder=" this percentage" id="percent'+increase+'"> %  								<input type="button" value="more" onclick="percentMore('+increase+')"> or 				<input type="button" value="less" onclick="percentLess('+increase+')"> than 										<input type="number" placeholder=" the fair share?" id="theShare'+increase+'"> = 								<input type="number" placeholder="Their Share" id="theirShare'+increase+'">	 							<input type="button" value="Submit" onclick="tally()"> </div>	</div>'
 
 				var replaceElement = document.createElement('li');
 				replaceElement.innerHTML = more.innerHTML;
 				adjusterFields.appendChild(more);
 				adjusterFields.replaceChild(replaceElement,more);
+
+				//fairShareFunc
+				document.getElementById("theShare").value = num1;
+				//shareWithTip
+				document.getElementById("theShare"+i).value = num4;
+
 				increase++;
 			}
 
@@ -248,9 +260,7 @@
 
 
 
-	<div class="block mainInputs">
-		<p id="displayTheirShare" class="instructions"></p>
-	</div>
+	
 
 
 		
