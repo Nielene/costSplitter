@@ -70,29 +70,29 @@
 			var fairShare;
 			var total;
 			var groupNum;
-			var num1;
+			var fairShareAll;
 			
 			function fairShareFunc(){
 				total = document.getElementById("total").value;
 				groupNum = document.getElementById("groupNum").value;
 
 				fairShare = total / groupNum;
-				num1 = fairShare.toFixed(2)
+				fairShareAll = fairShare.toFixed(2)
 
-				document.getElementById("printOrigAvg").value = num1;
+				document.getElementById("printOrigAvg").value = fairShareAll;
 				//document.getElementById("theShare").value = num1;
 				document.getElementById("question1").innerHTML = "Should someone pay something more? Or something less? Add/Remove an Adjuster."
 
 				console.log("Total is " + total);
 				console.log("Group num is " + groupNum);
 				console.log("Fair share is " + fairShare);
-				console.log("Fair share is ~ " + num1);
+				console.log("Fair share is ~ " + fairShareAll);
 			}
 
 			var tipPercent;
 			var tipShare;
 			var theShare;
-			var num4;
+			//var num4;
 			
 			function shareWithTip(){
 				total = document.getElementById("total").value;
@@ -103,16 +103,16 @@
 				num1 = fairShare.toFixed(2)
 
 				theShare = (percentTip/100 * total)/groupNum + fairShare;
-				num4 = theShare.toFixed(2);
+				fairShareAll = theShare.toFixed(2);
 
-				document.getElementById("printOrigAvg").value = num4;
+				document.getElementById("printOrigAvg").value = fairShareAll;
 				//document.getElementById("theShare").value = num4;
 				document.getElementById("question1").innerHTML = "Should someone pay something more? Or something less? Add/Remove an Adjuster."
 
 				console.log("Total is " + total);
 				console.log("Group num is " + groupNum);
 				console.log("Fairshare with tip is " + theShare);
-				console.log("Fairshare with tip is ~ " + num4);
+				console.log("Fairshare with tip is ~ " + fairShareAll);
 			}
 		
 
@@ -131,9 +131,9 @@
 				percent = document.getElementById("percent"+i).value;
 				name = document.getElementById("name"+i).value;
 				
-				useThisShare = document.getElementById("printOrigAvg").value
+				//useThisShare = document.getElementById("printOrigAvg").value
 
-				num2 = theShare + (percent/100 * theShare);
+				num2 = fairShareAll + (percent/100 * fairShareAll);
 				theirShare = num2.toFixed(2);
 
 				num3 = (total - theirShare)/(groupNum - 1);
@@ -145,7 +145,7 @@
 				console.log("Person is " + name);
 				console.log("Total is " + total);
 				console.log("Group num is " + groupNum);
-				console.log("Old fair share is " + theShare);
+				console.log("Old fair share is " + fairShareAll);
 				console.log("Their share is " + num2);
 				console.log("Their share is ~ " + theirShare);
 				console.log("New fairshare is " + num3);
@@ -156,7 +156,7 @@
 				percent = document.getElementById("percent"+i).value;
 				name = document.getElementById("name"+i).value;
 
-				num2 = theShare - (percent/100 * theShare);
+				num2 = fairShareAll - (percent/100 * fairShareAll);
 				theirShare = num2.toFixed(2);
 
 				num3 = (total - theirShare)/(groupNum - 1);
@@ -203,7 +203,7 @@
 			function minusFields(){
 				adjusterFields.children[adjusterFields.children.length-1].remove();
 			}
-			
+
 				// var replaceElement = document.createElement('li');
 				// replaceElement.innerHTML = more.innerHTML;
 
@@ -243,8 +243,8 @@
 
 			function recipe(){
 				return {
-					name: document.getElementById('dishName').value,
-					ingredients: document.getElementById('ingredients').value.split(','),
+					name: document.getElementById('name').value,
+					percentDiff: document.getElementById('ingredients').value.split(','),
 					duration: document.getElementById('timer').value,
 					dateCreated: new Date().toString()
 				};
