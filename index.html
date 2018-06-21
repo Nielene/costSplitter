@@ -140,7 +140,7 @@
 				newFairShare = num3.toFixed(2);
 
 				document.getElementById("theirShare"+i).value= theirShare;
-				document.getElementById("displayTheirShare").innerHTML = name + "\'s share is $" + theirShare + " and everyone else's is $" + newFairShare + "."
+				//document.getElementById("displayTheirShare").innerHTML = name + "\'s share is $" + theirShare + " and everyone else's is $" + newFairShare + "."
 
 				console.log("Person is " + name);
 				console.log("Total is " + total);
@@ -163,7 +163,7 @@
 				newFairShare = num3.toFixed(2);
 
 				document.getElementById("theirShare"+i).value= theirShare;
-				document.getElementById("displayTheirShare").innerHTML = name + "\'s share is $" + theirShare + " and everyone else's is $" + newFairShare + "."
+				//document.getElementById("displayTheirShare").innerHTML = name + "\'s share is $" + theirShare + " and everyone else's is $" + newFairShare + "."
 
 
 				console.log("Person is " + name);
@@ -180,46 +180,78 @@
 			var fields = 0;
 			var adjusterFields;
 			var more;
-			var submitButton;
+			// var submitButton;
 
 			var increase =0;
 			function addFields(){
 				fields++;
 				adjusterFields = document.getElementById("adjusterFields");
 				more = document.createElement("li");
-				more.innerHTML = '<div class="main2 container-fluid inputs">	<div class="mainInputs">								<input type="text" placeholder=" This person" id="name'+increase+'"> is paying 										<input type="number" placeholder=" this percentage" id="percent'+increase+'"> %  								<input type="button" value="more" onclick="percentMore('+increase+')"> or 				<input type="button" value="less" onclick="percentLess('+increase+')"> than the fair share =					<input type="number" placeholder="Their Share" id="theirShare'+increase+'">	 							 </div>	</div>'
+				more.innerHTML = '<div class="main2 container-fluid inputs">	<div class="mainInputs">								<input type="text" placeholder=" This person" id="name'+increase+'"> is paying 										<input type="number" placeholder=" this percentage" id="percent'+increase+'"> %  								<input type="button" value="more" onclick="percentMore('+increase+')"> or 				<input type="button" value="less" onclick="percentLess('+increase+')"> than the fair share =					<input type="number" placeholder="Their Share" id="theirShare'+increase+'" class = "theirShares">	 							 </div>	</div>'
 
 				var replaceElement = document.createElement('li');
 				replaceElement.innerHTML = more.innerHTML;
 				adjusterFields.appendChild(more);
 				adjusterFields.replaceChild(replaceElement,more);
-				//fairShareFunc
-				//document.getElementById("theShare").value = num1;
-				//shareWithTip
-				//document.getElementById("theShare"+i).value = num4;
+				
 				increase++;
 			}
+
+
 			var remove;
 			function minusFields(){
 				adjusterFields.children[adjusterFields.children.length-1].remove();
 			}
 
-				// var replaceElement = document.createElement('li');
-				// replaceElement.innerHTML = more.innerHTML;
+			var contents;
+			var sumAll;
+			var lastFairShare;
+			function tally(){
+				contents = document.getElementsByClassName("theirShares")
+				sumAll = contents.reduce(function(total, element){
+					return total + element.value
+				});
 
-				// adjusterFields.replaceChild(replaceElement,more);
-			
-			// var cookBook = []; //used to hold recipes
-			var anotherField = [];
 
-			function displayCookBook(){
-				document.getElementById('display').innerHTML = '';
-				for(var i=0; i<cookBook.length; i++){
-					document.getElementById('display').innerHTML += '<li>' + cookBook[i].name + ' includes ' +
-					cookBook[i].ingredients.join(' and ') + '. It takes '+
-					cookBook[i].duration + ' to cook</li>';
-				}
+				num3 = (total - sumAll)/(groupNum - contents.length);
+				lastFairShare = num3.toFixed(2);
+
+				document.getElementById('displayTheirShare').innerHTML= "Everyone else's fair share is " + lastFairShare;
+
 			}
+
+
+
+			// var cookBook = []; //used to hold recipes
+			// var summing = [];
+
+			// function tally(){
+			// 	return {
+			// 		name: document.getElementById('name').value,
+			// 		percentMoreOrLess: document.getElementById('percent').value,
+			// 		theirShare: document.getElementById('theirShare').value,
+			// 	};
+			// }
+
+			// function saveData(){
+			// 	summing.push( tally() );
+			// 	alert (summing[summing.length-1].name + " has been added!");
+			// 	sumTheirShares();
+			// }
+
+			// var lastFairShare;
+			// function sumTheirShares(){
+			// 	document.getElementById("displayTheirShare").innerHTML = '';
+			// 	for (var i=0; i<summing.length; i++){
+
+			// 		sum = theirShare[i].add
+
+			// 		lastFairShare = (total - sum)/(groupNum-summing.length)
+
+			// 		document.getElementById("displayTheirShare").innerHTML = "Everyone else's fair share is " +lastFairShare;
+			// 	}
+			// }
+			
 
 			// function addFields(){
 			// 	document.getElementById('moreFields').innerHTML = '';
@@ -241,14 +273,7 @@
 			// 	displayCookBook();
 			// }
 
-			function recipe(){
-				return {
-					name: document.getElementById('name').value,
-					percentDiff: document.getElementById('ingredients').value.split(','),
-					duration: document.getElementById('timer').value,
-					dateCreated: new Date().toString()
-				};
-			}
+		
 
 	 
 			
