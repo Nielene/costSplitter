@@ -187,7 +187,7 @@
 				fields++;
 				adjusterFields = document.getElementById("adjusterFields");
 				more = document.createElement("li");
-				more.innerHTML = '<div class="main2 container-fluid inputs">	<div class="mainInputs">								<input type="text" placeholder=" This person" id="name'+increase+'"> is paying 										<input type="number" placeholder=" this percentage" id="percent'+increase+'"> %  								<input type="button" value="more" onclick="percentMore('+increase+')"> or 				<input type="button" value="less" onclick="percentLess('+increase+')"> than the fair share =					<input type="number" placeholder="Their Share" id="theirShare'+increase+'" class = "theirShares">	 							 </div>	</div>'
+				more.innerHTML = '<div class="main2 container-fluid inputs">	<div class="mainInputs">								<input type="text" placeholder=" This person" id="name'+increase+'"> is paying 										<input type="number" placeholder=" this percentage" id="percent'+increase+'"> %  								<input type="button" value="more" onclick="percentMore('+increase+')"> or 				<input type="button" value="less" onclick="percentLess('+increase+')"> than the fair share =					<input type="number" placeholder="Their Share" id="theirShare'+increase+'" class = "theirShares'+increase+'	">	 							 </div>	</div>'
 
 				var replaceElement = document.createElement('li');
 				replaceElement.innerHTML = more.innerHTML;
@@ -203,21 +203,24 @@
 				adjusterFields.children[adjusterFields.children.length-1].remove();
 			}
 
-			var contents;
-			var sumAll;
+			var contents = [];
+			var sumAll=0;
 			var lastFairShare;
 			function tally(){
+				for (var i=0; i<contents.length; i++){
+
 				contents = document.getElementsByClassName("theirShares")
-				sumAll = contents.reduce(function(total, element){
-					return total + element.value
-				});
+				// sumAll = contents.reduce(function(total, element){
+				// return total + element.value
+				// });
+				sumAll += contents[i];
 
 
 				num3 = (total - sumAll)/(groupNum - contents.length);
 				lastFairShare = num3.toFixed(2);
 
 				document.getElementById('displayTheirShare').innerHTML= "Everyone else's fair share is " + lastFairShare;
-
+				}
 			}
 
 
@@ -398,6 +401,7 @@ https://developer.mozilla.org/en-US/docs/Web/API/HTMLSelectElement/remove
 https://www.youtube.com/watch?v=UbFyRPWo62Y
 https://www.youtube.com/watch?v=pRN6WFUEFFE
 https://www.youtube.com/watch?v=m1gs57iz3J0
+https://medium.com/@chrisburgin95/rewriting-javascript-sum-an-array-dbf838996ed0
 
 
 
