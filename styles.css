@@ -1,24 +1,30 @@
 body{
 	text-align: center;
-	background-color: #42f489;
+	background-image: url(http://3.bp.blogspot.com/-Ofcv5eJeMzM/UNGq03oPEKI/AAAAAAAAAFM/3Bon3p3gvtw/s1600/noche-nueva-york-8.jpg);
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: center;
+	height: 100%;
+	/*opacity: 0.5;*/
 }
 
 #header h1{
 	/*color: #6dff54;*/
-	color: #42f489;
+	color: orange;
 	font-family: "Times New Roman", Times, serif;
 	font-style: italic;
 	font-weight: bold;
 	font-size: 80px;
 	letter-spacing: 15px;
+	z-index: -1;
 }
 
 #header{
 	text-align: center;
 	padding-top: 1px;
 	padding-bottom: 12px;
-	background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRH2fraPKe-GFHFsMgAztZJdeach_8a82VAEJKycwbP-cDC-ZS0gQ);
-	/*opacity: 0.5;*/
+	background-color: black;
+	/*background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRH2fraPKe-GFHFsMgAztZJdeach_8a82VAEJKycwbP-cDC-ZS0gQ);*/ /*opacity: 0.5;*/
 	/*background-color: black;*/
 	/*opacity of backgound image: translucent;*/
 }	
@@ -32,7 +38,7 @@ body{
 	
 	padding-top: 15px;	
 	text-align: center;
-	background-color: #42f489;
+	/*background-color: #42f489;*/
 }
 
 .main2 {
@@ -43,7 +49,7 @@ body{
 	font-size: 18px;
 	
 	text-align: center;
-	background-color: #42f489;
+	/*background-color: #42f489;*/
 }
 
 .mainInputs{
@@ -52,7 +58,21 @@ body{
 }
 
 .mainInputs label{
+	color: orange;
+	background-color: white, 0.5;
+	font-weight: bold;
+	font-size: 18px;
 	padding-left: 10px;
+	z-index: -1;
+}
+
+.mainInputs p{
+	color: orange;
+	background-color: white, 0.5;
+	font-weight: bold;
+	font-size: 18px;
+	padding-left: 10px;
+	z-index: -1;
 }
 
 #question1{
