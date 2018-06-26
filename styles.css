@@ -1,11 +1,12 @@
 body{
 	text-align: center;
-	background-image: url(http://3.bp.blogspot.com/-Ofcv5eJeMzM/UNGq03oPEKI/AAAAAAAAAFM/3Bon3p3gvtw/s1600/noche-nueva-york-8.jpg);
+	background-image: url(https://www.sassyhongkong.com/wp-content/uploads/2018/02/group-dining-dinner-hong-kong.jpg);
 	background-repeat: no-repeat;
 	background-size: cover;
 	background-position: center;
-	height: 100%;
+	height: 100vh; /*viewport height*/
 	/*opacity: 0.5;*/
+	/*vectors image opacity*/
 }
 
 #header h1{
@@ -23,7 +24,7 @@ body{
 	text-align: center;
 	padding-top: 1px;
 	padding-bottom: 12px;
-	background-color: black;
+	/*background-color: black;*/
 	/*background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRH2fraPKe-GFHFsMgAztZJdeach_8a82VAEJKycwbP-cDC-ZS0gQ);*/ /*opacity: 0.5;*/
 	/*background-color: black;*/
 	/*opacity of backgound image: translucent;*/
@@ -50,6 +51,11 @@ body{
 	
 	text-align: center;
 	/*background-color: #42f489;*/
+}
+
+.section{
+	background-color: rgba(0,0,0,0.5);
+	border-radius: 10px;
 }
 
 .mainInputs{

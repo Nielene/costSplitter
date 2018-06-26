@@ -17,10 +17,10 @@
 
 
 <!-- The Total, Number in group, Tip percentage, Share for all with/out tip -->
-			<div class="main container-fluid">
-				<div class="row mainInputs ">
+			<div class="main container">
+				<div class="section">
 
-					<div class="block mainInputs">
+					<div class=" mainInputs">
 						<label>Total bill: </label>
 						<input type="number" placeholder=" Total" id="total">
 						<label>Number in group: </label>
@@ -28,7 +28,7 @@
 						<label>Percent Tip: </label>
 						<input type="number" placeholder="Tip" id="percentTip">%
 					</div>
-					<div class="block mainInputs">
+					<div class=" mainInputs">
 						<label>Everyone's </label>
 						<input type="button" value="Fair Share" onclick="fairShareFunc()"> 					
 						<label>or </label>
@@ -39,7 +39,7 @@
 						<br>
 					</div>
 						
-					<div class="block mainInputs">
+					<div class=" mainInputs">
 						<p id="question1"></p>
 					</div>
 				</div>
@@ -48,7 +48,7 @@
 
 
 <!-- Add / Remove buttons -->
-	<div class="mainInputs">
+	<div class="mainInputs section">
 		<span id="addRemoveButtons">
 			<label> Now, you can </label> <input type="button" value="Add" id= "addFields" onclick="addFields()"> <label> or </label>
 			<input type="button" value="Remove" id= "minusFields" onclick="minusFields()"> <label> some Adjusters.</label>
@@ -62,7 +62,7 @@
 		
 
 <!-- Display for Added input fields -->
-		<div class="block mainInputs">
+		<div class=" mainInputs">
 			<p id="displayTheirShare" class="instructions"></p>
 		</div>
 
@@ -157,6 +157,9 @@
 				console.log("New fairshare is " + num3);
 				console.log("New fairshare is ~ " + newFairShare);
 			}
+
+			//
+			//
 			var i = 0;
 			function percentLess(i){
 				percent = document.getElementById("percent"+i).value;
@@ -182,6 +185,8 @@
 				console.log("New fairshare is ~ " + newFairShare);
 			}	
 	
+			//
+			//
 
 			var fields = 0;
 			var adjusterFields;
@@ -202,31 +207,33 @@
 				
 				increase++;
 			}
-
-
+			//
 			var remove;
 			function minusFields(){
 				adjusterFields.children[adjusterFields.children.length-1].remove();
 			}
 
-			var contents = [];
-			var sumAll=0;
+			//
+
+			
 			var lastFairShare;
+			var num3;
 			function tally(){
+				var contents = document.getElementsByClassName("theirShares")
+				var sumAll=0;
 				for (var i=0; i<contents.length; i++){
 
-				contents = document.getElementsByClassName("theirShares")
+				
 				// sumAll = contents.reduce(function(total, element){
 				// return total + element.value
 				// });
-				sumAll += contents[i];
-
+					sumAll += contents[i].value;
+				}
 
 				num3 = (total - sumAll)/(groupNum - contents.length);
 				lastFairShare = num3.toFixed(2);
-
+				
 				document.getElementById('displayTheirShare').innerHTML= "Everyone else's fair share is " + lastFairShare;
-				}
 			}
 
 
