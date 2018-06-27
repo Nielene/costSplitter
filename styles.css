@@ -11,11 +11,11 @@ body{
 
 #header h1{
 	/*color: #6dff54;*/
-	color: orange;
+	color: green;
 	font-family: "Times New Roman", Times, serif;
 	font-style: italic;
 	font-weight: bold;
-	font-size: 80px;
+	font-size: 60px;
 	letter-spacing: 15px;
 	z-index: -1;
 }
@@ -30,7 +30,7 @@ body{
 	/*opacity of backgound image: translucent;*/
 }	
 
-#main {
+.main {
 	color: black;
 	font-family: "Times New Roman", Times, serif;
 	font-style: normal;
@@ -48,23 +48,28 @@ body{
 	font-style: normal;
 	font-weight: bold;
 	font-size: 18px;
+	/*padding-right: 10px;*/
 	
 	text-align: center;
 	/*background-color: #42f489;*/
 }
 
 .section{
-	background-color: rgba(0,0,0,0.5);
+	background-color: rgba(255,255,255,0.7);
 	border-radius: 10px;
+	padding-right: 10px;
+	font-weight: bold;
+	height: 100vh;
 }
 
 .mainInputs{
 	padding-top: 5px;
 	padding-bottom: 5px;
+	/*padding-right: 10px;*/
 }
 
 .mainInputs label{
-	color: orange;
+	color: black;
 	background-color: white, 0.5;
 	font-weight: bold;
 	font-size: 18px;
@@ -73,11 +78,11 @@ body{
 }
 
 .mainInputs p{
-	color: orange;
+	color: black;
 	background-color: white, 0.5;
 	font-weight: bold;
 	font-size: 18px;
-	padding-left: 10px;
+	/*padding-left: 10px;*/
 	z-index: -1;
 }
 
@@ -95,6 +100,16 @@ body{
 	padding-bottom: 10px;
 	word-spacing: 3px;
 	letter-spacing: 1px;
+}
+
+input[type=number]{
+	width: 140px;
+
+}
+
+input[type=text]{
+	width: 140px;
+
 }
 
 /*.row1{
