@@ -7,9 +7,9 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	
 	<!-- <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"> -->
-	<!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 	
 	<link rel="stylesheet" type="text/css" href="styles.css">
 
@@ -40,6 +40,7 @@
 						<!-- <label>or </label> -->
 						<input type="button" value="Fair Share "  onclick="shareWithTip()"> <!-- with Tip -->
 						<!-- <label> is </label> -->
+						<label> $</label>
 						<input type="number" placeholder="Fair Share" id="printOrigAvg">
 						<!-- <input type="number" placeholder="Share with Tip" id="shareWithTip"> -->
 						<br>
@@ -66,9 +67,11 @@
 			<div class="mainInputs">
 				<p id="adjusterFields"></p>
 			</div>
-				<label> and  </label> 
+				<!-- <label> and  </label>  -->
 				<input type="button" value="Submit" onclick="tally()"> 
-				<label>  them. </label>
+				<!-- <label>  them. </label> -->
+				<br>
+				<input type="button" value="Reset" onclick="reset()">
 		</div>
 		
 
@@ -209,7 +212,7 @@
 				fields++;
 				adjusterFields = document.getElementById("adjusterFields");
 				more = document.createElement("li");
-				more.innerHTML = '<div class="main2 container inputs">	<div class="mainInputs">								<input type="text" placeholder=" This person" id="name'+increase+'"> <label>is paying </label>			<input type="number" placeholder=" this percentage" id="percent'+increase+'"> <label>%</label>  		<input type="button" value="more" onclick="percentMore('+increase+')">  <label>or</label> 			<input type="button" value="less" onclick="percentLess('+increase+')"> <label>than the fair share =</label> 			<input type="number" placeholder="Their Share" id="theirShare'+increase+'" class = "theirShares'+increase+'	">	 							 </div>	</div>'
+				more.innerHTML = '<div class="main2 container inputs">	<div class="mainInputs">								<input type="text" placeholder=" This person" id="name'+increase+'"> <label>is paying </label>			<input type="number" placeholder=" this percentage" id="percent'+increase+'"> <label>%  </label>  		<input type="button" value="more" onclick="percentMore('+increase+')">  <label>or</label> 			<input type="button" value="less" onclick="percentLess('+increase+')"> <label>than the fair share = $</label> 			<input type="number" placeholder="Their Share" id="theirShare'+increase+'" class = "theirShares'+increase+'	">	 							 </div>	</div>'
 
 				var replaceElement = document.createElement('li');
 				replaceElement.innerHTML = more.innerHTML;
@@ -247,6 +250,15 @@
 				document.getElementById('displayTheirShare').innerHTML= "Everyone else's fair share is " + lastFairShare;
 			}
 
+			function reset(){
+				document.getElementById("total").value = "";
+				document.getElementById("groupNum").value = "";
+				document.getElementById("percentTip").value = "";
+				document.getElementById("printOrigAvg").value = "";
+				document.getElementById("name").value = "";
+				document.getElementById("percent").value = "";
+				document.getElementById("theirShare").value = "";
+			}
 
 
 			// var cookBook = []; //used to hold recipes
@@ -372,7 +384,7 @@
 
 			function minusFields(){
 				// fields++;
-				// for (var i = adjusterFields.length - 1; i >= 0; i--) {
+				// for (var i = adjusterFields.length - 1; i >= 0; i++) {
 				// 	adjusterFields[i]
 				// }
 				// var adjusterFields = document.getElementById("adjusterFields");
@@ -416,7 +428,7 @@ https://javascript.info/number
 https://stackoverflow.com/questions/9686538/align-labels-in-form-next-to-input
 https://stackoverflow.com/questions/5482677/how-to-apply-two-css-classes-to-a-single-div-span
 https://stackoverflow.com/questions/42442323/bootstrap-4-col-align-right
-https://www.youtube.com/watch?v=d1IFl1AeJGY   -- add fields
+https://www.youtube.com/watch?v=d1IFl1AeJGY   - add fields
 https://www.youtube.com/watch?v=d1IFl1AeJGY
 https://stackoverflow.com/questions/15933037/adding-input-fields-in-javascript-with-onclick-button
 https://stackoverflow.com/questions/1847220/javascript-document-createelement-delete-domelement
