@@ -212,7 +212,7 @@
 				fields++;
 				adjusterFields = document.getElementById("adjusterFields");
 				more = document.createElement("li");
-				more.innerHTML = '<div class="main2 container inputs">	<div class="mainInputs">								<input type="text" placeholder=" This person" id="name'+increase+'"> <label>is paying </label>			<input type="number" placeholder=" this percentage" id="percent'+increase+'"> <label>%  </label>  		<input type="button" value="more" onclick="percentMore('+increase+')">  <label>or</label> 			<input type="button" value="less" onclick="percentLess('+increase+')"> <label>than the fair share = $</label> 			<input type="number" placeholder="Their Share" id="theirShare'+increase+'" class = "theirShares'+increase+'	">	 							 </div>	</div>'
+				more.innerHTML = '<div class="main2 container inputs">	<div class="mainInputs">								<input type="text" placeholder=" This person" id="name'+increase+'"> <label>is paying </label>			<input type="number" placeholder=" this percentage" id="percent'+increase+'"> <label>%  </label>  		<input type="button" value="more" onclick="percentMore('+increase+')">  <label>or</label> 			<input type="button" value="less" onclick="percentLess('+increase+')"> <label>than the Fair Share = $</label> 			<input type="number" placeholder="Their Share" id="theirShare'+increase+'" class = "theirShares'+increase+'	">	 							 </div>	</div>'
 
 				var replaceElement = document.createElement('li');
 				replaceElement.innerHTML = more.innerHTML;
@@ -249,6 +249,7 @@
 				
 				document.getElementById('displayTheirShare').innerHTML= "Everyone else's fair share is " + lastFairShare;
 			}
+
 
 			function reset(){
 				document.getElementById("total").value = "";
