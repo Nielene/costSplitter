@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Cost Splitter</title>
+	<!-- Bootstrap CDN -->
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	
+	<!-- <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"> -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	
+	<link rel="stylesheet" type="text/css" href="styles.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+</head>
+	<body>
+		<div class="section container">
+			<!-- <form action="/action_page.php"> -->
+				<div id="header">		
+					<h1>Cost  Splitter</h1>
+				</div>
+
+				<div>
+					<button class="btn"><i class="fa fa-home"></i> <a href="https://nielene.github.io/main/"></a></button>
+				</div>
+				
+
+
+<!-- The Total, Number in group, Tip percentage, Share for all with/out tip -->
+			<div class="main container">
+				<div ><!-- class="section" -->
+
+					<div class=" mainInputs">
+						<!-- <label>Total bill: </label> -->
+						<input type="number" placeholder=" Total" size="35" maxlength="100" id="total">
+						<!-- <label>Number in group: </label> -->
+						<input type="number" placeholder="Number of People" size="4" id="groupNum">
+						<!-- <label>Percent Tip: </label> -->
+						<input type="number" placeholder="Tip" id="percentTip"><label>%</label>
+					<!-- </div>
+					<div class=" mainInputs"> -->
+						<!-- <label>Everyone's </label> -->
+						<!-- <input type="button" value="Fair Share" onclick="fairShareFunc()"> 					 -->
+						<!-- <label>or </label> -->
+						<input type="button" value="Fair Share "  onclick="shareWithTip()"> <!-- with Tip -->
+						<!-- <label> is </label> -->
+						<label> $</label>
+						<input type="number" placeholder="Fair Share" id="printOrigAvg">
+						<!-- <input type="number" placeholder="Share with Tip" id="shareWithTip"> -->
+						<br>
+					</div>
+						
+					<div class=" mainInputs">
+						<p id="question1"></p>
+					</div>
+				</div>
+			<!-- </div> -->
+			<br>
+
+
+	<!-- Add / Remove buttons -->
+		<div class="mainInputs  container"><!-- section -->
+			<span id="addRemoveButtons">
+				<!-- <label> Now, you can </label>  -->
+				<input type="button" value="Add an Adjuster" id= "addFields" onclick="addFields()"> 
+				<!-- <label> or </label> -->
+				<input type="button" value="Remove an Adjuster" id= "minusFields" onclick="minusFields()"> 
+				<!-- <label> some Adjusters.</label> -->
+			</span>
+		
+			<div class="mainInputs">
+				<p id="adjusterFields"></p>
+			</div>
+				<!-- <label> and  </label>  -->
+				<input type="button" value="Submit" onclick="tally()"> 
+				<!-- <label>  them. </label> -->
+				<br>
+				<input type="button" value="Reset" onclick="reset()">
+		</div>
+		
+
+<!-- Display for Added input fields -->
+		<div class=" mainInputs">
+			<p id="displayTheirShare" class="instructions "></p><!-- section -->
+		</div>
+
+	</div>
+
+		<script>
+			var fairShare;
+			var total;
+			var groupNum;
+			var fairShareAll;
+			
+			function fairShareFunc(){
+				total = document.getElementById("total").value;
+				groupNum = document.getElementById("groupNum").value;
+
+				fairShare = total / groupNum;
+				fairShareAll = fairShare.toFixed(2)
+
+				document.getElementById("printOrigAvg").value = fairShareAll;
+				//document.getElementById("fairShareWithTip").value = num1;
+				document.getElementById("question1").innerHTML = "Should someone pay something more? Or something less? Add/Remove an Adjuster."
+
+				console.log("Total is " + total);
+				console.log("Group num is " + groupNum);
+				console.log("Fair share is " + fairShare);
+				console.log("Fair share is ~ " + fairShareAll);
+			}
+
+			var tipPercent;
+			var percentTip;
+			var tipShare;
+			var fairShareWithTip;
+			//var num4;
+			
+			function shareWithTip(){
+				total = document.getElementById("total").value;
+				groupNum = document.getElementById("groupNum").value;
+				percentTip = document.getElementById("percentTip").value;
+
+				fairShare = total / groupNum;
+				num1 = fairShare.toFixed(2)
+
+				fairShareWithTip = (percentTip/100 * total)/groupNum + fairShare;
+				fairShareAll = fairShareWithTip.toFixed(2);
+
+				document.getElementById("printOrigAvg").value = fairShareAll;
+				//document.getElementById("fairShareWithTip").value = num4;
+				document.getElementById("question1").innerHTML = "Should someone pay something more? Or something less? Add/Remove an Adjuster."
+
+				console.log("Total is " + total);
+				console.log("Group num is " + groupNum);
+				console.log("Fairshare with tip is " + fairShareWithTip);
+				console.log("Fairshare with tip is ~ " + fairShareAll);
+			}
+		
+
+
+		
+			var theirShare;
+			var newFairShare;
+			var percent;
+			var name;
+			var useThisShare;
+
+			var num2;
+			var num3;
+			
+			var i = 0;
+			function percentMore(i){
+				percent = parseFloat(document.getElementById("percent"+i).value);
+				name = document.getElementById("name"+i).value;
+				
+				//useThisShare = document.getElementById("printOrigAvg").value
+
+				num2 = parseFloat(fairShareAll) + (percent/100 * parseFloat(fairShareAll));
+				theirShare = num2.toFixed(2);
+				// theirShare = num2.toFixed(2);
+
+				num3 = (total - theirShare)/(groupNum - 1);
+				newFairShare = num3.toFixed(2);
+
+				document.getElementById("theirShare"+i).value= theirShare;
+
+				//document.getElementById("displayTheirShare").innerHTML = name + "\'s share is $" + theirShare + " and everyone else's is $" + newFairShare + "."
+
+				console.log("Person is " + name);
+				console.log("Total is " + total);
+				console.log("Group num is " + groupNum);
+				console.log("Old fair share is " + fairShareAll);
+				console.log("Their share is " + num2);
+				console.log("Their share is ~ " + theirShare);
+				console.log("New fairshare is " + num3);
+				console.log("New fairshare is ~ " + newFairShare);
+			}
+
+			//
+			//
+			var i = 0;
+			function percentLess(i){
+				percent = document.getElementById("percent"+i).value;
+				name = document.getElementById("name"+i).value;
+
+				num2 = fairShareAll - (percent/100 * fairShareAll);
+				theirShare = num2.toFixed(2);
+
+				num3 = (total - theirShare)/(groupNum - 1);
+				newFairShare = num3.toFixed(2);
+
+				document.getElementById("theirShare"+i).value= theirShare;
+				//document.getElementById("displayTheirShare").innerHTML = name + "\'s share is $" + theirShare + " and everyone else's is $" + newFairShare + "."
+
+
+				console.log("Person is " + name);
+				console.log("Total is " + total);
+				console.log("Group number is " + groupNum);
+				console.log("Old fair share is " + tipShare);
+				console.log("Their share is " + num2);
+				console.log("Their share is ~ " + theirShare);
+				console.log("New fair share is " + num3);
+				console.log("New fairshare is ~ " + newFairShare);
+			}	
+	
+			//
+			//
+
+			var fields = 0;
+			var adjusterFields;
+			var more;
+			// var submitButton;
+
+			var increase =0;
+			function addFields(){
+				fields++;
+				adjusterFields = document.getElementById("adjusterFields");
+				more = document.createElement("li");
+				more.innerHTML = '<div class="main2 container inputs">	<div class="mainInputs">								<input type="text" placeholder=" This person" id="name'+increase+'"> <label>is paying </label>			<input type="number" placeholder=" this percentage" id="percent'+increase+'"> <label>%  </label>  		<input type="button" value="more" onclick="percentMore('+increase+')">  <label>or</label> 			<input type="button" value="less" onclick="percentLess('+increase+')"> <label>than the Fair Share = $</label> 			<input type="number" placeholder="Their Share" id="theirShare'+increase+'" class = "theirShares">	 							 </div>	</div>'
+
+				var replaceElement = document.createElement('li');
+				replaceElement.innerHTML = more.innerHTML;
+				adjusterFields.appendChild(more);
+				adjusterFields.replaceChild(replaceElement,more);
+				
+				increase++;
+			}
+			//
+			var remove;
+			function minusFields(){
+				adjusterFields.children[adjusterFields.children.length-1].remove();
+			}
+
+			//
+
+			
+			var lastFairShare;
+			var num3;
+			function tally(){
+				var contents = document.getElementsByClassName("theirShares")
+				var sumAll=0;
+				for (var i=0; i<contents.length; i++){
+
+				
+				// sumAll = contents.reduce(function(total, element){
+				// return total + element.value
+				// });
+					sumAll += parseFloat(contents[i].value);
+				}
+
+				num3 = (total - sumAll)/(groupNum - contents.length);
+				lastFairShare = num3.toFixed(2);
+				
+				document.getElementById('displayTheirShare').innerHTML= "Everyone else's fair share is " + lastFairShare;
+			}
+
+
+			function reset(){
+				document.getElementById("total").value = "";
+				document.getElementById("groupNum").value = "";
+				document.getElementById("percentTip").value = "";
+				document.getElementById("printOrigAvg").value = "";
+				document.getElementById("name").value = "";
+				document.getElementById("percent").value = "";
+				document.getElementById("theirShare").value = "";
+				// document.getElementById("adjusterFields").value = "";
+			}
+
+
+			// var cookBook = []; //used to hold recipes
+			// var summing = [];
+
+			// function tally(){
+			// 	return {
+			// 		name: document.getElementById('name').value,
+			// 		percentMoreOrLess: document.getElementById('percent').value,
+			// 		theirShare: document.getElementById('theirShare').value,
+			// 	};
+			// }
+
+			// function saveData(){
+			// 	summing.push( tally() );
+			// 	alert (summing[summing.length-1].name + " has been added!");
+			// 	sumTheirShares();
+			// }
+
+			// var lastFairShare;
+			// function sumTheirShares(){
+			// 	document.getElementById("displayTheirShare").innerHTML = '';
+			// 	for (var i=0; i<summing.length; i++){
+
+			// 		sum = theirShare[i].add
+
+			// 		lastFairShare = (total - sum)/(groupNum-summing.length)
+
+			// 		document.getElementById("displayTheirShare").innerHTML = "Everyone else's fair share is " +lastFairShare;
+			// 	}
+			// }
+			
+
+			// function addFields(){
+			// 	document.getElementById('moreFields').innerHTML = '';
+			// 	for(var i=0; i<anotherField.length; i++){
+			// 		document.getElementById('moreFields').innerHTML += '<br>' + anotherField[i].name + anotherField[i].percent + anotherField[i].fairShare + anotherField[i].theirShare + '<br>' 
+			// 	}
+			// }
+
+		
+			// function saveData(){
+			// 	cookBook.push( recipe() );
+			// 	alert(cookBook[cookBook.length - 1].name + " has been added!");
+			// 	displayCookBook();
+			// }
+
+			// function addFields(){
+			// 	anotherField.push( inputs() );
+			// 	alert(anotherField[anotherField.length - 1].name + " has been added!");
+			// 	displayCookBook();
+			// }
+
+		
+
+	 
+			
+
+
+
+			
+
+		</script>
+
+
+
+	
+
+
+		
+
+<!-- 
+			
+		<div class="main2 container-fluid">
+			<div class="block mainInputs" id="inputs">
+				<input type="text" placeholder=" Who is paying" id="name">
+				<input type="number" placeholder=" this percentage" id="percent"> %  
+
+				<input type="button" value="more" onclick="percentMore()"> or 
+				<input type="button" value="less" onclick="percentLess()"> than 
+
+				<input type="number" placeholder=" the fair share?" id="fairShareWithTip">
+			
+			<span id="addRemoveButtons">
+				<input type="button" value="Another" id= "addFields" onclick="addFields()">
+				<input type="button" value="Remove" id= "minusFields" onclick="minusFields()">
+			</span>
+			</div>
+		</div>
+
+		<form enctype="multipart/form-data" action="" method="post">
+			<div class="main2 container-fluid">
+				<ul id="adjusterFields"></ul>
+
+			</div>
+		</form>
+
+
+			<div class="block mainInputs">
+				<p id="theirShare" class="instructions"></p>
+			</div>
+
+
+	
+<script>
+
+			var fields = 0;
+			var adjusterFields;
+			var more;
+			function addFields(){
+				fields++;
+				adjusterFields = document.getElementById("adjusterFields");
+				more = document.createElement("li");
+				more.innerHTML = '<div class="block mainInputs"><input type="text" placeholder=" Who is paying" id="name"><input type="number" placeholder=" this percentage" id="percent"> %  <input type="button" value="more" onclick="percentMore()"> or <input type="button" value="less" onclick="percentLess()"> than <input type="number" placeholder=" the fair share?" id="fairShareWithTip"><input type="button" value="Another" id= "addFields" onclick="addFields()"><input type="button" value="Remove" id= "minusFields" onclick="minusFields()"></div>'
+
+				var replaceElement = document.createElement('li');
+				replaceElement.innerHTML = more.innerHTML;
+
+				adjusterFields.appendChild(more);
+				adjusterFields.replaceChild(replaceElement,more);
+			}
+
+
+			function minusFields(){
+				// fields++;
+				// for (var i = adjusterFields.length - 1; i >= 0; i++) {
+				// 	adjusterFields[i]
+				// }
+				// var adjusterFields = document.getElementById("adjusterFields");
+				// var more = document.createElement("div");
+				//adjusterFields.parentNode.removeChild(adjusterFields);
+				// return false;
+
+				fields++;
+				adjusterFields = document.getElementById("adjusterFields");
+				more = document.createElement("li");
+				more.innerHTML = '<div class="block mainInputs"><input type="text" placeholder=" Who is paying" id="name"><input type="number" placeholder=" this percentage" id="percent"> %  <input type="button" value="more" onclick="percentMore()"> or <input type="button" value="less" onclick="percentLess()"> than <input type="number" placeholder=" the fair share?" id="fairShareWithTip"><input type="button" value="Another" id= "addFields" onclick="addFields()"><input type="button" value="Remove" id= "minusFields" onclick="minusFields()"></div>'
+
+				adjusterFields.removeChild(more);
+						}
+
+
+		</script>
+		 -->
+		
+
+
+<!-- <script src="script.js"></script>  use to link your JavaScript file-->
+			<!-- </form> -->
+		</div>
+	</body>
+</html>
+
+<!-- https://medium.freecodecamp.org/reduce-f47a7da511a9 
+https://www.google.com/search?q=how+do+you+add+another+input+box&rlz=1C1CHWA_enUS598US598&oq=how+do+you+add+another+input+box&aqs=chrome..69i57.1085j0j7&sourceid=chrome&ie=UTF-8
+https://stackoverflow.com/questions/35154428/how-do-you-print-user-input-in-html-using-javascript
+https://stackoverflow.com/questions/18300201/how-do-i-calculate-2-input-fields-and-put-results-in-3rd-input-field
+https://www.youtube.com/watch?v=xzLclwZOZ-g
+https://www.youtube.com/watch?v=xzLclwZOZ-g
+https://www.w3schools.com/php/php_includes.asp
+https://stackoverflow.com/questions/22776583/why-php-tag-is-not-working-in-html-file
+https://bootstrapdocs.com/v3.3.6/docs/css/
+https://www.w3schools.com/tags/tag_output.asp
+https://www.w3schools.com/tags/att_input_type.asp
+https://www.sololearn.com/Discuss/196415/solved-why-i-cant-use-a-variable-outside-the-function-defined-inside-a-function
+https://javascript.info/number
+https://stackoverflow.com/questions/9686538/align-labels-in-form-next-to-input
+https://stackoverflow.com/questions/5482677/how-to-apply-two-css-classes-to-a-single-div-span
+https://stackoverflow.com/questions/42442323/bootstrap-4-col-align-right
+https://www.youtube.com/watch?v=d1IFl1AeJGY   - add fields
+https://www.youtube.com/watch?v=d1IFl1AeJGY
+https://stackoverflow.com/questions/15933037/adding-input-fields-in-javascript-with-onclick-button
+https://stackoverflow.com/questions/1847220/javascript-document-createelement-delete-domelement
+https://www.w3schools.com/jsref/met_node_removechild.asp - opposite of appendChild()
+https://www.abeautifulsite.net/adding-and-removing-elements-on-the-fly-using-javascript
+https://stackoverflow.com/questions/5933157/how-to-remove-an-html-element-using-javascript
+https://developer.mozilla.org/en-US/docs/Web/API/HTMLSelectElement/remove
+https://www.youtube.com/watch?v=UbFyRPWo62Y
+https://www.youtube.com/watch?v=pRN6WFUEFFE
+https://www.youtube.com/watch?v=m1gs57iz3J0
+https://medium.com/@chrisburgin95/rewriting-javascript-sum-an-array-dbf838996ed0
+
+
+
+
+		// var fairShareSoln = a/b;
+		// function fairShare(a,b){
+		// 	return (a/b);
+		// }
+		// console.log(fairShare());
+
+		// alert(return(a/b));
+		// alert(a);
+
+			//where display it.
+			//where place it for later use.
+
+
+// const euros = [29.76, 41.85, 46.5];
+// const sum = euros.reduce((total, amount) => total + amount); 
+// sum // 118.11
+
+// var avg = document.getElementById("origAvg") = function(){
+// document.getElementByFunction("printOrigAvg").innerHTML = fairShare;
+// }
+
+<button id="origAvg">Fair share</button>
+
+function sum(){
+document.getElementById("printOrigAvg").value = document.getElementById("total").value + document.getElementById("groupNum").value   ;}
+
+var a = document.getElementById("total").value;
+var b = document.getElementById("groupNum").value;
+
+document.getElementById("printOrigAvg").value = a + b;
+
+<input type="name" placeholder="Who" id="name">
+		<input type="number" placeholder="How much more? Or less?" id="percent">% 
+		<input list="moreOrLess" name="moreOrLess">
+		<datalist id="moreOrLess">
+			<option value = "more">
+			<option value = "less">
+		</datalist>
+		<input type="button" value="Their share" onclick="percent()"><br>
+		<p id="theirShare"></p>
+
+
+<script>
+			// var fairShare = document.getElementById("printOrigAvg").value;
+			var total = document.getElementById("total").value;
+			var groupNum = document.getElementById("groupNum").value;
+
+			function fairShare(){
+				var fairShare = document.getElementById("printOrigAvg").value;
+
+				fairShare = total / groupNum;
+
+				
+			// document.getElementById("printOrigAvg").value = document.getElementById("total").value / document.getElementById("groupNum").value;
+
+			// document.getElementById("fairShareWithTip").value = document.getElementById("total").value / document.getElementById("groupNum").value;
+			document.getElementById("question1").innerHTML = "But is that really fair? Should someone pay something more? Or something less?"
+			}
+		</script>
+
+		<div id="main" class="container-fluid" class="inputs">
+			<form method="post" id="insert_form"> 
+				<div class="mainInputs row">
+
+					<div class="block mainInputs col-6 ml-auto">
+						<label>Total bill: </label>
+					</div>
+					<div class="block mainInputs col-6 mr-auto">
+						<input type="number" placeholder="Total" id="total">
+					</div>
+					<div class="block mainInputs">
+						<label>Number in group: </label>
+						<input type="number" placeholder="Group Number" id="groupNum">
+					</div>
+				<div>
+
+			</form>
+		
+Adjuster input fields:
+<div class="main2 container-fluid">
+	<div class="block mainInputs" id="inputs">
+		<input type="text" placeholder=" Who is paying" id="name">
+		<input type="number" placeholder=" this percentage" id="percent"> %  
+
+		<input type="button" value="more" onclick="percentMore()"> or 
+		<input type="button" value="less" onclick="percentLess()"> than 
+
+		<input type="number" placeholder=" the fair share?" id="fairShareWithTip"> = 
+		<span><input type="number" placeholder="Their Share" id="theirShare"></span>
+	
+	</div>
+</div>
+
+function percentLess(){
+				percent = document.getElementById("percent").value;
+				name = document.getElementById("name").value;
+
+				num2 = fairShare - (percent/100 * fairShare);
+				theirShare = num2.toFixed(2);
+
+				num3 = (total - theirShare)/(groupNum - 1);
+				newFairShare = num3.toFixed(2);
+
+				document.getElementById("theirShare").value= theirShare;
+				document.getElementById("displayTheirShare").innerHTML = name + "\'s share is $" + theirShare + " and everyone else's is $" + newFairShare + "."
+
+				console.log("Person is " + name);
+				console.log("Total is " + total);
+				console.log("Group number is " + groupNum);
+				console.log("Old fair share is " + fairShare);
+				console.log("Their share is " + num2);
+				console.log("Their share is ~ " + theirShare);
+				console.log("New fair share is " + num3);
+				console.log("New fairshare is ~ " + newFairShare);
+			}
+
+var fields = 0;
+			var adjusterFields;
+			var more;
+			var submitButton;
+			function addFields(){
+				fields++;
+				adjusterFields = document.getElementById("adjusterFields");
+				more = document.createElement("li");
+				more.innerHTML = '<div class="main2 container-fluid inputs">	<div class="mainInputs">				<input type="text" placeholder=" Who is paying" id="name">									<input type="number" placeholder=" this percentage" id="percent"> %  						<input type="button" value="more" onclick="percentMore()"> or 							<input type="button" value="less" onclick="percentLess()"> than 						<input type="number" placeholder=" the fair share?" id="fairShareWithTip"> = 							<span><input type="number" placeholder="Their Share" id="theirShare"></span>	</div>	</div>'
+
+				submitButton = document.createElement("li");
+				submitButton.innerHTML = '<div> <input type="button" value="Submit" onclick="tally()"> <div> '
+
+
+				var replaceElement = document.createElement('li');
+				replaceElement.innerHTML = more.innerHTML;
+				adjusterFields.appendChild(more);
+				adjusterFields.replaceChild(replaceElement,more);
+
+				var makeSubmit = document.createElement('li');
+				makeSubmit.innerHTML = submitButton.innerHTML;
+				adjusterFields.appendChild(submitButton);
+
+			}
+
+
+
+
+-->

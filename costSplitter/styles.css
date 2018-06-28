@@ -1,0 +1,138 @@
+body{
+	text-align: center;
+	background-image: url(https://www.sassyhongkong.com/wp-content/uploads/2018/02/group-dining-dinner-hong-kong.jpg);
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: center;
+	height: 100vh; /*viewport height*/
+	/*opacity: 0.5;*/
+	/*vectors image opacity*/
+}
+
+#header h1{
+	/*color: #6dff54;*/
+	color: green;
+	font-family: "Times New Roman", Times, serif;
+	font-style: italic;
+	font-weight: bold;
+	font-size: 60px;
+	letter-spacing: 15px;
+	z-index: -1;
+}
+
+#header{
+	text-align: center;
+	padding-top: 1px;
+	padding-bottom: 12px;
+	/*background-color: black;*/
+	/*background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRH2fraPKe-GFHFsMgAztZJdeach_8a82VAEJKycwbP-cDC-ZS0gQ);*/ /*opacity: 0.5;*/
+	/*background-color: black;*/
+	/*opacity of backgound image: translucent;*/
+}	
+
+.main {
+	color: black;
+	font-family: "Times New Roman", Times, serif;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 18px;
+	
+	padding-top: 15px;	
+	text-align: center;
+	/*background-color: #42f489;*/
+}
+
+.main2 {
+	color: black;
+	font-family: "Times New Roman", Times, serif;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 18px;
+	/*padding-right: 10px;*/
+	
+	text-align: center;
+	/*background-color: #42f489;*/
+}
+
+.section{
+	background-color: rgba(255,255,255,0.7);
+	border-radius: 10px;
+	padding-right: 10px;
+	font-weight: bold;
+	height: 100vh;
+}
+
+.mainInputs{
+	padding-top: 5px;
+	padding-bottom: 5px;
+	/*padding-right: 10px;*/
+}
+
+.mainInputs label{
+	color: black;
+	background-color: white, 0.5;
+	font-weight: bold;
+	font-size: 18px;
+	padding-left: 10px;
+	z-index: -1;
+}
+
+.mainInputs p{
+	color: black;
+	background-color: white, 0.5;
+	font-weight: bold;
+	font-size: 18px;
+	/*padding-left: 10px;*/
+	z-index: -1;
+}
+
+#question1{
+	font-size: 20px;
+	padding-top: 0px;
+	padding-bottom: 5px;
+	word-spacing: 3px;
+	letter-spacing: 1px;
+}
+
+.instructions{
+	font-size: 20px;
+	padding-top: 5px;
+	padding-bottom: 10px;
+	word-spacing: 3px;
+	letter-spacing: 1px;
+}
+
+input[type=number]{
+	width: 170px;
+	border-radius: 10px;
+
+}
+
+input[type=text]{
+	width: 170px;
+	border-radius: 10px;
+}
+
+input[type=button]{
+	
+	border-radius: 10px;
+	background-color: green;
+	box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+	border-color: grey;
+}
+
+/*.row1{
+	display: inline;
+}*/
+
+/*.block label{
+	display: inline-block;
+	width: 50%;
+	text-align: right;
+}*/
+
+/*.block input{
+	display: grid;
+	grid-template-columns: max-content max-content;
+	grid-gap: 5px;
+}*/
