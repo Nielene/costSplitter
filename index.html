@@ -18,16 +18,18 @@
 	<body>
 		<div class="section container">
 			<!-- <form action="/action_page.php"> -->
-				<div id="header">		
-					<h1>Cost  Splitter</h1>
+			<div class="header">
+				<div>		
+					<h1>CostSplitter</h1>
 				</div>
 
-				<div>
-					<button class="btn"><i class="fa fa-home"></i> <a href="https://nielene.github.io/main/"></a></button>
+				<div class="nav" id="icon">
+					<a href="https://nielene.github.io/main/" > <button class="btn"><i class="fa fa-home"></i></button> </a>
+
+					<!-- <a class="btn" href="https://nielene.github.io/main/" role="button">Main Page</a> -->
 				</div>
+			</div>	
 				
-
-
 <!-- The Total, Number in group, Tip percentage, Share for all with/out tip -->
 			<div class="main container">
 				<div ><!-- class="section" -->
@@ -82,7 +84,7 @@
 		
 
 <!-- Display for Added input fields -->
-		<div class=" mainInputs">
+		<div >
 			<p id="displayTheirShare" class="instructions "></p><!-- section -->
 		</div>
 
@@ -253,7 +255,7 @@
 				num3 = (total - sumAll)/(groupNum - contents.length);
 				lastFairShare = num3.toFixed(2);
 				
-				document.getElementById('displayTheirShare').innerHTML= "Everyone else's fair share is " + lastFairShare;
+				document.getElementById('displayTheirShare').innerHTML= "Everyone else's fair share is $" + lastFairShare;
 			}
 
 

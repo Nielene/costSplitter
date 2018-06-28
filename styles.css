@@ -1,5 +1,5 @@
 body{
-	text-align: center;
+	/*text-align: center;*/
 	background-image: url(https://www.sassyhongkong.com/wp-content/uploads/2018/02/group-dining-dinner-hong-kong.jpg);
 	background-repeat: no-repeat;
 	background-size: cover;
@@ -9,26 +9,62 @@ body{
 	/*vectors image opacity*/
 }
 
-#header h1{
+.section{
+	background-color: rgba(255,255,255,0.7);
+	border-radius: 10px;
+	padding-right: 10px;
+	font-weight: bold;
+	height: 100vh;
+}
+
+.header{
+	/*text-align: center;*/
+	padding-top: 1px;
+	padding-bottom: 10px;
+	/*display: inline-block;*/
+	display: inline-flex;
+	justify-content: space-between;
+	/*background-color: black;*/
+	/*background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRH2fraPKe-GFHFsMgAztZJdeach_8a82VAEJKycwbP-cDC-ZS0gQ);*/ /*opacity: 0.5;*/
+	/*background-color: black;*/
+	/*opacity of backgound image: translucent;*/
+}
+
+.header h1{
 	/*color: #6dff54;*/
 	color: green;
 	font-family: "Times New Roman", Times, serif;
 	font-style: italic;
 	font-weight: bold;
 	font-size: 60px;
-	letter-spacing: 15px;
-	z-index: -1;
+	margin-right: 100%;
+	/*margin-right: auto;*/
+	/*letter-spacing: 15px;*/
+	/*z-index: -1;*/
+	/*text-align: center;*/
+	/*vertical-align: right;*/
 }
 
-#header{
-	text-align: center;
-	padding-top: 1px;
-	padding-bottom: 12px;
-	/*background-color: black;*/
-	/*background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRH2fraPKe-GFHFsMgAztZJdeach_8a82VAEJKycwbP-cDC-ZS0gQ);*/ /*opacity: 0.5;*/
-	/*background-color: black;*/
-	/*opacity of backgound image: translucent;*/
-}	
+.header .nav{
+	background: transparent;
+	color: green;
+	font-size: 30px;
+	/*margin-left: auto;*/
+	/*text-align: left;*/
+	/*vertical-align: right;*/
+	margin-left: 200%;
+}
+
+
+.header .btn{
+	background: transparent;
+	color: green;
+	font-size: 50px;
+	/*margin-left: auto;*/
+	/*text-align: left;*/
+	/*vertical-align: right;*/
+
+}
 
 .main {
 	color: black;
@@ -52,14 +88,6 @@ body{
 	
 	text-align: center;
 	/*background-color: #42f489;*/
-}
-
-.section{
-	background-color: rgba(255,255,255,0.7);
-	border-radius: 10px;
-	padding-right: 10px;
-	font-weight: bold;
-	height: 100vh;
 }
 
 .mainInputs{
@@ -95,7 +123,7 @@ body{
 }
 
 .instructions{
-	font-size: 20px;
+	font-size: 25px;
 	padding-top: 5px;
 	padding-bottom: 10px;
 	word-spacing: 3px;
