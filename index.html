@@ -12,6 +12,7 @@
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 	
 	<link rel="stylesheet" type="text/css" href="styles.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 </head>
 	<body>
@@ -20,6 +21,11 @@
 				<div id="header">		
 					<h1>Cost  Splitter</h1>
 				</div>
+
+				<div>
+					<button class="btn"><i class="fa fa-home"></i> <a href="https://nielene.github.io/main/"></a></button>
+				</div>
+				
 
 
 <!-- The Total, Number in group, Tip percentage, Share for all with/out tip -->
@@ -212,7 +218,7 @@
 				fields++;
 				adjusterFields = document.getElementById("adjusterFields");
 				more = document.createElement("li");
-				more.innerHTML = '<div class="main2 container inputs">	<div class="mainInputs">								<input type="text" placeholder=" This person" id="name'+increase+'"> <label>is paying </label>			<input type="number" placeholder=" this percentage" id="percent'+increase+'"> <label>%  </label>  		<input type="button" value="more" onclick="percentMore('+increase+')">  <label>or</label> 			<input type="button" value="less" onclick="percentLess('+increase+')"> <label>than the Fair Share = $</label> 			<input type="number" placeholder="Their Share" id="theirShare'+increase+'" class = "theirShares'+increase+'	">	 							 </div>	</div>'
+				more.innerHTML = '<div class="main2 container inputs">	<div class="mainInputs">								<input type="text" placeholder=" This person" id="name'+increase+'"> <label>is paying </label>			<input type="number" placeholder=" this percentage" id="percent'+increase+'"> <label>%  </label>  		<input type="button" value="more" onclick="percentMore('+increase+')">  <label>or</label> 			<input type="button" value="less" onclick="percentLess('+increase+')"> <label>than the Fair Share = $</label> 			<input type="number" placeholder="Their Share" id="theirShare'+increase+'" class = "theirShares">	 							 </div>	</div>'
 
 				var replaceElement = document.createElement('li');
 				replaceElement.innerHTML = more.innerHTML;
@@ -241,7 +247,7 @@
 				// sumAll = contents.reduce(function(total, element){
 				// return total + element.value
 				// });
-					sumAll += contents[i].value;
+					sumAll += parseFloat(contents[i].value);
 				}
 
 				num3 = (total - sumAll)/(groupNum - contents.length);
@@ -259,6 +265,7 @@
 				document.getElementById("name").value = "";
 				document.getElementById("percent").value = "";
 				document.getElementById("theirShare").value = "";
+				// document.getElementById("adjusterFields").value = "";
 			}
 
 
